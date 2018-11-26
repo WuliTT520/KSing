@@ -1,7 +1,9 @@
-package com.homework.ksing.ksing;
+package com.homework.ksing.ksing.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.homework.ksing.ksing.R;
 
 public class LoginActivity extends AppCompatActivity {
 
