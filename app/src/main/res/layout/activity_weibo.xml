@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.next.easynavigition.view.EasyNavigitionBar
+        android:id="@+id/navigitionBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:Easy_addIconSize="40dp"
+        app:Easy_navigitionHeight="60dp"
+        app:Easy_addLayoutHeight="60dp"
+        app:Easy_addLayoutRule="RULE_CENTER"
+        app:Easy_hasPadding="false"
+        app:Easy_navigitionBackground="#90ffffff">
+
+    </com.next.easynavigition.view.EasyNavigitionBar>
+
+</android.support.constraint.ConstraintLayout>
