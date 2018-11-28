@@ -72,6 +72,7 @@ public class WBFirstFragment extends android.support.v4.app.Fragment {
         bt05.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                System.out.println("111111111111");
                 if (getActivity() instanceof WeiboActivity) {
                     ((WeiboActivity) getActivity()).getNavigitionBar().selectTab(1);
                     ((WBSecondFragment) (((WeiboActivity) getActivity()).getNavigitionBar().getAdapter().getItem(1))).showToast("嘻嘻哈哈嗝");
