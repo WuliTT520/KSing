@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="red">#F14F44</color>
+    <color name="red">#f14f44</color>
     <color name="black">#0d0d0d</color>
     <color name="yellow">#FFB434</color>
-    <color name="white">#FFFFFF</color>
+    <color name="white">#ffffff</color>
     <color name="org">#ff8a45</color>
     <color name="pink">#df796d</color>
     <color name="blue">#56a3bd</color>
