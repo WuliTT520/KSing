@@ -6,6 +6,8 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.app.Fragment;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
@@ -13,11 +15,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.homework.ksing.ksing.ui.weibo.BFragment;
 import com.next.easynavigition.constant.Anim;
 import com.next.easynavigition.utils.NavigitionUtil;
 import com.next.easynavigition.view.EasyNavigitionBar;
@@ -31,6 +36,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WeiboActivity extends FragmentActivity {
+
+
 
     private EasyNavigitionBar navigitionBar;
 
@@ -54,12 +61,29 @@ public class WeiboActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = WeiboActivity.this.getWindow();
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
+                   );
+            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+
+                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.TRANSPARENT);
+
+        }
+
+
         setContentView(R.layout.activity_weibo);
+
+
+
 
         navigitionBar = findViewById(R.id.navigitionBar);
 
         fragments.add(new WBFirstFragment());
-        fragments.add(new WBSecondFragment());
+        fragments.add(new BFragment());
         fragments.add(new AddThirdFragment());
         fragments.add(new AddThirdFragment());
 
@@ -67,6 +91,8 @@ public class WeiboActivity extends FragmentActivity {
                 .normalIconItems(normalIcon)
                 .selectIconItems(selectIcon)
                 .fragmentList(fragments)
+                .iconSize(30)
+                .selectTextColor(Color.parseColor("#F14F44"))
                 .fragmentManager(getSupportFragmentManager())
                 .onTabClickListener(new EasyNavigitionBar.OnTabClickListener() {
                     @Override
@@ -158,7 +184,7 @@ public class WeiboActivity extends FragmentActivity {
                     //圆形扩展的动画
                     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
                         int x = NavigitionUtil.getScreenWidth(WeiboActivity.this) / 2;
-                        int y = (int) (NavigitionUtil.getScreenHeith(WeiboActivity.this) - NavigitionUtil.dip2px(WeiboActivity.this, 25));
+                        int y = (int) (NavigitionUtil.getScreenHeith(WeiboActivity.this) - NavigitionUtil.dip2px(WeiboActivity.this, 50));
                         Animator animator = ViewAnimationUtils.createCircularReveal(navigitionBar.getAddViewLayout(), x,
                                 y, 0, navigitionBar.getAddViewLayout().getHeight());
                         animator.addListener(new AnimatorListenerAdapter() {

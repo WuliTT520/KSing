@@ -28,6 +28,9 @@ dependencies {
     implementation files('src/libs/okhttp-3.2.0.jar')
     implementation files('src/libs/okio-1.9.0.jar')
     implementation 'com.github.forvv231:EasyNavigition:1.0.1'
+
+
+    api project(path: ':circlerefresh')
 }
 
 

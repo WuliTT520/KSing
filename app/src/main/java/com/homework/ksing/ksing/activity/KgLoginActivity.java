@@ -13,6 +13,9 @@ import android.widget.Toast;
 import com.homework.ksing.ksing.R;
 import com.homework.ksing.ksing.ui.WeiboActivity;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -28,7 +31,7 @@ public class KgLoginActivity extends Activity {
     private EditText usercode;
     private EditText password;
     private Button login;
-    private String flag;
+    private String result;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,9 +44,8 @@ public class KgLoginActivity extends Activity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(KgLoginActivity.this, WeiboActivity.class);
-                startActivity(intent);
-                /*
+
+
                 OkHttpClient client = new OkHttpClient.Builder()
                         .readTimeout(5, TimeUnit.SECONDS)
                         .build();
@@ -51,11 +53,11 @@ public class KgLoginActivity extends Activity {
                 //post请求来获得数据
                 //创建一个RequestBody，存放重要数据的键值对
                 RequestBody body = new FormBody.Builder()
-                        .add("uid", usercode.getText().toString())
-                        .add("pwd", password.getText().toString()).build();
+                        .add("code", usercode.getText().toString())
+                        .add("password", password.getText().toString()).build();
                 //创建一个请求对象，传入URL地址和相关数据的键值对的对象
-                Request request = new Request.Builder()
-                        .url("http://192.168.88.1:8080/jqueryWork/CheckUser")
+                final Request request = new Request.Builder()
+                        .url("http://192.168.88.1:8080/login")
                         .post(body).build();
 
                 //创建一个能处理请求数据的操作类
@@ -70,23 +72,35 @@ public class KgLoginActivity extends Activity {
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
-                        flag=response.body().string();
-                        if(flag.equals("1")){
-                            Intent intent=new Intent(KgLoginActivity.this,LoginActivity.class);
+                        result=response.body().string();
+                        JSONObject data = null;
+                        try {
+                            data = new JSONObject(result);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        if(data!=null){
+
+                            Intent intent=new Intent(KgLoginActivity.this, WeiboActivity.class);
                             startActivity(intent);
                             Looper.prepare();
                             Toast.makeText(KgLoginActivity.this,"登陆成功！",Toast.LENGTH_SHORT).show();
+                            finish();
+
                             Looper.loop();
-
-
                         }else{
+                            Intent intent=new Intent(KgLoginActivity.this,MainActivity.class);
+                            startActivity(intent);
                             Looper.prepare();
                             Toast.makeText(KgLoginActivity.this,"用户名或密码错误！",Toast.LENGTH_SHORT).show();
                             Looper.loop();
+                            System.out.print(5644);
                         }
                     }
                 });
-                */
+
             }
         });
     }

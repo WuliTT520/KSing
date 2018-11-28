@@ -1,1 +1,1 @@
-include ':app', ':easynavigition'
+include ':app', ':easynavigition', ':circlerefresh'

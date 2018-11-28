@@ -8,8 +8,8 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/ul"
         android:supportsRtl="true"
-        android:theme="@android:style/Theme.NoTitleBar">
-        <activity android:name=".activity.MainActivity" />
+        android:theme="@android:style/Theme.NoTitleBar"
+        >
         <activity android:name=".activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,8 +18,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.KgLoginActivity"/>
+
         <activity android:name=".ui.WeiboActivity"/>
-
+        <activity android:name=".activity.MainActivity"/>
     </application>
-
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

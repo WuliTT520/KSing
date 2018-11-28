@@ -84,7 +84,7 @@ public class EasyNavigitionBar extends LinearLayout {
     //ViewPager切换动画
     private boolean smoothScroll = false;
     //图标大小
-    private int iconSize = 20;
+    private int iconSize = 100;
 
     //提示红点大小
     private float hintPointSize = 6;
