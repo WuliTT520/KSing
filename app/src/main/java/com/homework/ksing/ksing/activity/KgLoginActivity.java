@@ -40,7 +40,8 @@ public class KgLoginActivity extends Activity {
         password=findViewById(R.id.password);
         login=findViewById(R.id.login);
 
-
+        Intent intent=new Intent(KgLoginActivity.this, WeiboActivity.class);
+        startActivity(intent);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
