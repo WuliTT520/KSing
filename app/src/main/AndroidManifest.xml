@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.homework.ksing.ksing">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ul"
@@ -11,16 +13,16 @@
         android:supportsRtl="true"
         android:theme="@android:style/Theme.NoTitleBar"
         tools:replace="android:icon,android:roundIcon">
-        <activity android:name=".activity.LoginActivity">
+        <activity android:name=".activity.LoginActivity"/>
+        <activity android:name=".activity.KgLoginActivity" />
+        <activity android:name=".ui.MainActivity" />
+        <activity android:name=".activity.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.KgLoginActivity"/>
-
-        <activity android:name=".ui.MainActivity"/>
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
+
 </manifest>

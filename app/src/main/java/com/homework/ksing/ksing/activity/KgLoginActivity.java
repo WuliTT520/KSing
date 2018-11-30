@@ -1,7 +1,9 @@
 package com.homework.ksing.ksing.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -36,6 +38,8 @@ public class KgLoginActivity extends Activity {
     private EditText password;
     private Button login;
     private String result;
+    SharedPreferences sp;
+    SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +55,7 @@ public class KgLoginActivity extends Activity {
 
         }
         setContentView(R.layout.activity_kg_login);
+        sp=this.getSharedPreferences("userInfo", Context.MODE_PRIVATE);
         usercode=findViewById(R.id.usercode);
         password=findViewById(R.id.password);
         login=findViewById(R.id.login);
@@ -59,6 +64,15 @@ public class KgLoginActivity extends Activity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+//                if(usercode.getText().toString().equals("123456")&&password.getText().toString().equals("123456")){
+//                    editor = sp.edit();
+//                    editor.putBoolean("isLogin",true);
+//                    editor.commit();
+//                    Intent intent=new Intent(KgLoginActivity.this, MainActivity.class);
+//                    startActivity(intent);
+
+//                }
 
 
                 OkHttpClient client = new OkHttpClient.Builder()
@@ -98,6 +112,9 @@ public class KgLoginActivity extends Activity {
 
                         if(data!=null){
 
+                            editor = sp.edit();
+                            editor.putBoolean("isLogin",true);
+                            editor.commit();
                             Intent intent=new Intent(KgLoginActivity.this, MainActivity.class);
                             startActivity(intent);
                             Looper.prepare();

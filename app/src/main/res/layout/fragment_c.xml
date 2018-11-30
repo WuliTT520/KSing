@@ -78,7 +78,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="15dp"
-                    app:srcCompat="@mipmap/bsk" />
+                    android:src="@mipmap/bsk"
+                    app:srcCompat="@mipmap/bsk"
+                    tools:srcCompat="@mipmap/bsk" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -100,7 +102,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="15dp"
-                    app:srcCompat="@mipmap/bsp" />
+                    android:src="@mipmap/bsp"
+                    app:srcCompat="@mipmap/bsp"
+                    tools:srcCompat="@mipmap/bsp" />
 
                 <TextView
                     android:id="@+id/textView9"
@@ -123,7 +127,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="15dp"
-                    app:srcCompat="@mipmap/bsw" />
+                    android:src="@mipmap/bsw"
+                    app:srcCompat="@mipmap/bsw"
+                    tools:srcCompat="@mipmap/bsw" />
 
                 <TextView
                     android:id="@+id/textView10"
@@ -146,6 +152,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="15dp"
+                    android:src="@mipmap/bsu"
                     app:srcCompat="@mipmap/bsu" />
 
                 <TextView

@@ -32,6 +32,3 @@ dependencies {
 
     api project(path: ':circlerefresh')
 }
-
-
-
