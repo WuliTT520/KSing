@@ -1,26 +1,17 @@
-package com.homework.ksing.ksing.ui.weibo;
+package com.homework.ksing.ksing.ui.main;
 
-import android.app.Fragment;
-import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.example.circlerefresh.CircleRefreshLayout;
 import com.homework.ksing.ksing.R;
-import com.homework.ksing.ksing.activity.KgLoginActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,7 +21,7 @@ import java.util.List;
  * Created by Jue on 2018/6/2.
  */
 
-public class BFragment extends android.support.v4.app.Fragment {
+public class AFragment extends android.support.v4.app.Fragment {
     private CircleRefreshLayout mRefreshLayout;
     private ListView mList;
     private List contacts=new ArrayList(0);
@@ -39,12 +30,10 @@ public class BFragment extends android.support.v4.app.Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_b, container,false);
+        View view = inflater.inflate(R.layout.fragment_a, container,false);
         mRefreshLayout = (CircleRefreshLayout) view.findViewById(R.id.refresh_layout1);
+        /*
         mList = (ListView) view.findViewById(R.id.list1);
-
-
-
 
         String[] strs = {
                 "The",
@@ -82,7 +71,7 @@ public class BFragment extends android.support.v4.app.Fragment {
                 Toast.makeText(getActivity(),"111111111111111！",Toast.LENGTH_SHORT).show();
             }
         });
-
+*/
         mRefreshLayout.setOnRefreshListener(
 
                 new CircleRefreshLayout.OnCircleRefreshListener() {

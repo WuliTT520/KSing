@@ -2,16 +2,20 @@ package com.homework.ksing.ksing.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.homework.ksing.ksing.R;
-import com.homework.ksing.ksing.ui.WeiboActivity;
+import com.homework.ksing.ksing.ui.MainActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,6 +39,17 @@ public class KgLoginActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = KgLoginActivity.this.getWindow();
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
+            );
+            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+
+                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.TRANSPARENT);
+
+        }
         setContentView(R.layout.activity_kg_login);
         usercode=findViewById(R.id.usercode);
         password=findViewById(R.id.password);
@@ -83,7 +98,7 @@ public class KgLoginActivity extends Activity {
 
                         if(data!=null){
 
-                            Intent intent=new Intent(KgLoginActivity.this, WeiboActivity.class);
+                            Intent intent=new Intent(KgLoginActivity.this, MainActivity.class);
                             startActivity(intent);
                             Looper.prepare();
                             Toast.makeText(KgLoginActivity.this,"登陆成功！",Toast.LENGTH_SHORT).show();
@@ -91,8 +106,6 @@ public class KgLoginActivity extends Activity {
 
                             Looper.loop();
                         }else{
-                            Intent intent=new Intent(KgLoginActivity.this,MainActivity.class);
-                            startActivity(intent);
                             Looper.prepare();
                             Toast.makeText(KgLoginActivity.this,"用户名或密码错误！",Toast.LENGTH_SHORT).show();
                             Looper.loop();

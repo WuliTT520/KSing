@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.homework.ksing.ksing">
 
     <application
@@ -9,7 +10,7 @@
         android:roundIcon="@drawable/ul"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.NoTitleBar"
-        >
+        tools:replace="android:icon,android:roundIcon">
         <activity android:name=".activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,8 +20,7 @@
         </activity>
         <activity android:name=".activity.KgLoginActivity"/>
 
-        <activity android:name=".ui.WeiboActivity"/>
-        <activity android:name=".activity.MainActivity"/>
+        <activity android:name=".ui.MainActivity"/>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

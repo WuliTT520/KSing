@@ -1,23 +1,21 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent"  tools:context=".activity.MainActivity">
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <com.example.circlerefresh.CircleRefreshLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/refresh_layout"
+
+    <com.next.easynavigition.view.EasyNavigitionBar
+        android:id="@+id/navigitionBar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        app:AniBackColor="#ff8b90af"
-        app:AniForeColor="#ffffffff"
-        app:CircleSmaller="6">
+        app:Easy_addIconSize="40dp"
+        app:Easy_navigitionHeight="60dp"
+        app:Easy_addLayoutHeight="60dp"
+        app:Easy_addLayoutRule="RULE_CENTER"
+        app:Easy_hasPadding="false"
+        app:Easy_navigitionBackground="#90ffffff">
 
-        <ListView
-            android:id="@+id/list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#ffffffff"></ListView>
-    </com.example.circlerefresh.CircleRefreshLayout>
+    </com.next.easynavigition.view.EasyNavigitionBar>
 
-
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

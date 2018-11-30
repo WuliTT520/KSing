@@ -4,14 +4,11 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
-import android.app.Activity;
-import android.app.Fragment;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
@@ -22,20 +19,19 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.homework.ksing.ksing.ui.weibo.BFragment;
+import com.homework.ksing.ksing.ui.main.AFragment;
 import com.next.easynavigition.constant.Anim;
 import com.next.easynavigition.utils.NavigitionUtil;
 import com.next.easynavigition.view.EasyNavigitionBar;
 import com.homework.ksing.ksing.R;
-import com.homework.ksing.ksing.ui.weibo.AddThirdFragment;
-import com.homework.ksing.ksing.ui.weibo.WBFirstFragment;
-import com.homework.ksing.ksing.ui.weibo.WBSecondFragment;
+import com.homework.ksing.ksing.ui.main.CFragment;
+import com.homework.ksing.ksing.ui.main.BFragment;
 import com.homework.ksing.ksing.view.KickBackAnimator;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class WeiboActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivity {
 
 
 
@@ -63,7 +59,7 @@ public class WeiboActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = WeiboActivity.this.getWindow();
+            Window window = MainActivity.this.getWindow();
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
                    );
             window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
@@ -75,17 +71,17 @@ public class WeiboActivity extends FragmentActivity {
         }
 
 
-        setContentView(R.layout.activity_weibo);
+        setContentView(R.layout.activity_main);
 
 
 
 
         navigitionBar = findViewById(R.id.navigitionBar);
 
-        fragments.add(new WBFirstFragment());
+        fragments.add(new AFragment());
         fragments.add(new BFragment());
-        fragments.add(new AddThirdFragment());
-        fragments.add(new AddThirdFragment());
+        fragments.add(new CFragment());
+        fragments.add(new CFragment());
 
         navigitionBar.titleItems(tabText)
                 .normalIconItems(normalIcon)
@@ -98,7 +94,7 @@ public class WeiboActivity extends FragmentActivity {
                     @Override
                     public boolean onTabClickEvent(View view, int position) {
                         if (position == 4) {
-                            Toast.makeText(WeiboActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
                             //return true则拦截事件、不进行页面切换
                             return true;
                         } else if (position == 2) {
@@ -119,7 +115,7 @@ public class WeiboActivity extends FragmentActivity {
 
     //仿微博弹出菜单
     private View createWeiboView() {
-        ViewGroup view = (ViewGroup) View.inflate(WeiboActivity.this, R.layout.layout_add_view, null);
+        ViewGroup view = (ViewGroup) View.inflate(MainActivity.this, R.layout.layout_add_view, null);
         menuLayout = view.findViewById(R.id.icon_group);
         cancelImageView = view.findViewById(R.id.cancel_iv);
         cancelImageView.setOnClickListener(new View.OnClickListener() {
@@ -129,7 +125,7 @@ public class WeiboActivity extends FragmentActivity {
             }
         });
         for (int i = 0; i < 4; i++) {
-            View itemView = View.inflate(WeiboActivity.this, R.layout.item_icon, null);
+            View itemView = View.inflate(MainActivity.this, R.layout.item_icon, null);
             ImageView menuImage = itemView.findViewById(R.id.menu_icon_iv);
             TextView menuText = itemView.findViewById(R.id.menu_text_tv);
 
@@ -183,8 +179,8 @@ public class WeiboActivity extends FragmentActivity {
                 try {
                     //圆形扩展的动画
                     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                        int x = NavigitionUtil.getScreenWidth(WeiboActivity.this) / 2;
-                        int y = (int) (NavigitionUtil.getScreenHeith(WeiboActivity.this) - NavigitionUtil.dip2px(WeiboActivity.this, 50));
+                        int x = NavigitionUtil.getScreenWidth(MainActivity.this) / 2;
+                        int y = (int) (NavigitionUtil.getScreenHeith(MainActivity.this) - NavigitionUtil.dip2px(MainActivity.this, 50));
                         Animator animator = ViewAnimationUtils.createCircularReveal(navigitionBar.getAddViewLayout(), x,
                                 y, 0, navigitionBar.getAddViewLayout().getHeight());
                         animator.addListener(new AnimatorListenerAdapter() {

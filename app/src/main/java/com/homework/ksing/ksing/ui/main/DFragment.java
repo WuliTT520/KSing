@@ -1,4 +1,4 @@
-package com.homework.ksing.ksing.ui.weibo;
+package com.homework.ksing.ksing.ui.main;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,12 +13,12 @@ import com.homework.ksing.ksing.R;
  * Created by Jue on 2018/6/2.
  */
 
-public class WBSecondFragment extends android.support.v4.app.Fragment {
+public class DFragment extends android.support.v4.app.Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_b, container,false);
+        View view = inflater.inflate(R.layout.fragment_a, container,false);
         return view;
     }
 
