@@ -64,7 +64,8 @@ public class KgLoginActivity extends Activity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent=new Intent(KgLoginActivity.this, MainActivity.class);
+                startActivity(intent);
 //                if(usercode.getText().toString().equals("123456")&&password.getText().toString().equals("123456")){
 //                    editor = sp.edit();
 //                    editor.putBoolean("isLogin",true);
@@ -73,7 +74,7 @@ public class KgLoginActivity extends Activity {
 //                    startActivity(intent);
 
 //                }
-
+/*
 
                 OkHttpClient client = new OkHttpClient.Builder()
                         .readTimeout(5, TimeUnit.SECONDS)
@@ -130,7 +131,7 @@ public class KgLoginActivity extends Activity {
                         }
                     }
                 });
-
+*/
             }
         });
     }

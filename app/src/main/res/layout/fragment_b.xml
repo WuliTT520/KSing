@@ -44,6 +44,44 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.526" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="244dp"
+            android:layout_height="33dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/text_bg5"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="50dp"
+            android:text="搜索伴奏/用户/作品"
+            android:textColor="@color/bg"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageView10"
+            app:layout_constraintHorizontal_bias="0.508"
+            app:layout_constraintStart_toEndOf="@+id/textView12"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.809" />
+
+        <ImageView
+            android:id="@+id/imageView19"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/akn"
+            app:layout_constraintBottom_toBottomOf="@+id/editText"
+            app:layout_constraintEnd_toEndOf="@+id/editText"
+            app:layout_constraintHorizontal_bias="0.038"
+            app:layout_constraintStart_toStartOf="@+id/editText"
+            app:layout_constraintTop_toTopOf="@+id/editText"
+            app:layout_constraintVertical_bias="0.0" />
+
     </android.support.constraint.ConstraintLayout>
 
     <com.example.circlerefresh.CircleRefreshLayout
@@ -58,10 +96,85 @@
         app:CircleSmaller="6"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout1">
 
-        <ListView
-            android:id="@+id/list1"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.homework.ksing.ksing.ui.main.LoopViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:padding="10dp">
+
+            </com.homework.ksing.ksing.ui.main.LoopViewPager>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="推荐"
+                    android:textColor="#F97A31"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="直播"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="歌房"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/textView20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="金曲"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="MV"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="短视频"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </LinearLayout>
 
     </com.example.circlerefresh.CircleRefreshLayout>
 

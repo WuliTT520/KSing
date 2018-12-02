@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.homework.ksing.ksing.ui.main.AFragment;
+import com.homework.ksing.ksing.ui.main.DFragment;
 import com.next.easynavigition.constant.Anim;
 import com.next.easynavigition.utils.NavigitionUtil;
 import com.next.easynavigition.view.EasyNavigitionBar;
@@ -81,7 +82,7 @@ public class MainActivity extends FragmentActivity {
         fragments.add(new AFragment());
         fragments.add(new BFragment());
         fragments.add(new CFragment());
-        fragments.add(new CFragment());
+        fragments.add(new DFragment());
 
         navigitionBar.titleItems(tabText)
                 .normalIconItems(normalIcon)
@@ -95,8 +96,7 @@ public class MainActivity extends FragmentActivity {
                     public boolean onTabClickEvent(View view, int position) {
                         if (position == 4) {
                             Toast.makeText(MainActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
-                            //return true则拦截事件、不进行页面切换
-                            return true;
+
                         } else if (position == 2) {
                             //跳转页面（全民K歌）   或者   弹出菜单（微博）
                             showMunu();

@@ -32,36 +32,33 @@ public class AFragment extends android.support.v4.app.Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_a, container,false);
         mRefreshLayout = (CircleRefreshLayout) view.findViewById(R.id.refresh_layout1);
-        /*
+
         mList = (ListView) view.findViewById(R.id.list1);
 
-        String[] strs = {
-                "The",
-                "Canvas",
-                "class",
-                "holds",
-                "the",
-                "draw",
-                "calls",
-                ".",
-                "To",
-                "draw",
-                "something,",
-                "you",
-                "need",
-                "4 basic",
-                "components",
-                "Bitmap",
-        };
-        for (int i=0;i<strs.length;i++) {
+        String[] name = {"张舒杨","张舒杨","张舒杨","张舒杨","张舒杨"};
+        int[] picture = {R.drawable.touxiang1,R.drawable.touxiang1,R.drawable.touxiang1,R.drawable.touxiang1,R.drawable.touxiang1};
+        String[] time = {"15:39","15:39","15:39","15:39","15:39"};
+        String[] text = {"我成为我的好友圈盟主，不服来战！","我成为我的好友圈盟主，不服来战！","我成为我的好友圈盟主，不服来战！","我成为我的好友圈盟主，不服来战！","我成为我的好友圈盟主，不服来战！"};
+        int[] picture1 = {R.drawable.songimg,R.drawable.songimg,R.drawable.songimg,R.drawable.songimg,R.drawable.songimg};
+        String[] songname = {"舍得","舍得","舍得","舍得","舍得"};
+        String[] num = {"3","3","3","3","3"};
+        String[]elnum={"5","评论","4","评论","评论"};
+        for (int i=0;i<name.length;i++) {
 
             HashMap map=new HashMap<String,Object>();
-            map.put("name",strs[i]);
-
+            map.put("name",name[i]);
+            map.put("time",time[i]);
+            map.put("picture",picture[i]);
+            map.put("text",text[i]);
+            map.put("num",num [i]);
+            map.put("picture1",picture1[i]);
+            map.put("songname",songname[i]);
+            map.put("elnum",elnum[i]);
             contacts.add(map);
 
         }
-        SimpleAdapter adapter=new SimpleAdapter(getActivity(),contacts,R.layout.list_layout,new String[]{"name"},new int[]{R.id.showList});
+        SimpleAdapter adapter=new SimpleAdapter(getActivity(),contacts,R.layout.dynamic_list,new String[]{"name","time","picture","text","num","picture1","songname","elnum"}
+        ,new int[]{R.id.name,R.id.time,R.id.picture,R.id.text,R.id.num,R.id.picture2,R.id.songname,R.id.elnum});
 
         mList.setAdapter(adapter);
 
@@ -71,7 +68,7 @@ public class AFragment extends android.support.v4.app.Fragment {
                 Toast.makeText(getActivity(),"111111111111111！",Toast.LENGTH_SHORT).show();
             }
         });
-*/
+
         mRefreshLayout.setOnRefreshListener(
 
                 new CircleRefreshLayout.OnCircleRefreshListener() {

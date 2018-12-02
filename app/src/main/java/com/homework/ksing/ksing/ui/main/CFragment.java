@@ -22,27 +22,24 @@ public class CFragment extends android.support.v4.app.Fragment {
 
 
         mRefreshLayout = (CircleRefreshLayout) view.findViewById(R.id.refresh_layout3);
+                                mRefreshLayout.setOnRefreshListener(
+
+                                        new CircleRefreshLayout.OnCircleRefreshListener() {
 
 
-
-        mRefreshLayout.setOnRefreshListener(
-
-                new CircleRefreshLayout.OnCircleRefreshListener() {
-
-
-                    @Override
-                    public void refreshing() {
-                        // do something when refresh starts
-                        new Thread() {
-                            @Override
-                            public void run() {
-                                super.run();
-                                try {
-                                    Thread.sleep(2000);//休眠3秒
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                }
-                                mRefreshLayout.finishRefreshing();
+                                            @Override
+                                            public void refreshing() {
+                                                // do something when refresh starts
+                                                new Thread() {
+                                                    @Override
+                                                    public void run() {
+                                                        super.run();
+                                                        try {
+                                                            Thread.sleep(2000);//休眠3秒
+                                                        } catch (InterruptedException e) {
+                                                            e.printStackTrace();
+                                                        }
+                                                        mRefreshLayout.finishRefreshing();
 
                                 /**
                                  * 要执行的操作
