@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.circlerefresh.CircleRefreshLayout;
 import com.homework.ksing.ksing.R;
 import com.homework.ksing.ksing.ui.MainActivity;
+import com.homework.ksing.ksing.view.ScrollDisabledListView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,15 +27,16 @@ import java.util.List;
 public class DFragment extends android.support.v4.app.Fragment {
     private CircleRefreshLayout mRefreshLayout;
     private LinearLayout myBottom;
-    private ListView mList;
+    private ScrollDisabledListView mList;
     private List contacts=new ArrayList(0);
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_d, container,false);
         View myBottomView = View.inflate(getActivity(), R.layout.my_bottom_layout, null);
-        mList = (ListView) myBottomView.findViewById(R.id.dynamicListview);
-
+        mList = (ScrollDisabledListView) myBottomView.findViewById(R.id.dynamicListview);
+//        mList.setEnabled(false);
+        mList.setFocusable(false);
         String[] name = {"张舒杨","张舒杨","张舒杨","张舒杨","张舒杨"};
         int[] picture = {R.drawable.touxiang1,R.drawable.touxiang1,R.drawable.touxiang1,R.drawable.touxiang1,R.drawable.touxiang1};
         String[] time = {"15:39","15:39","15:39","15:39","15:39"};

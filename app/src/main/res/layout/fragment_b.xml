@@ -87,13 +87,14 @@
     <com.example.circlerefresh.CircleRefreshLayout
         android:id="@+id/refresh_layout2"
         android:layout_width="match_parent"
-        android:layout_height="515dp"
+        android:layout_height="0dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_weight="1"
         app:AniBackColor="#ff8b90af"
         app:AniForeColor="#ffffffff"
         app:CircleSmaller="6"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout1">
 
         <LinearLayout

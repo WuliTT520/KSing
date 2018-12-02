@@ -55,9 +55,10 @@
         android:layout_height="1dp"
         android:background="#d8d2d2" />
 
-    <ListView
+    <com.homework.ksing.ksing.view.ScrollDisabledListView
         android:id="@+id/dynamicListview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="680dp"
+        android:fastScrollEnabled="false"/>
 
 </LinearLayout>
