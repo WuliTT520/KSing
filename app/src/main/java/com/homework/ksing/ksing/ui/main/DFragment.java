@@ -1,7 +1,10 @@
 package com.homework.ksing.ksing.ui.main;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +16,28 @@ import android.widget.Toast;
 
 import com.example.circlerefresh.CircleRefreshLayout;
 import com.homework.ksing.ksing.R;
+import com.homework.ksing.ksing.activity.KgLoginActivity;
 import com.homework.ksing.ksing.ui.MainActivity;
 import com.homework.ksing.ksing.view.ScrollDisabledListView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by Jue on 2018/6/2.
@@ -33,6 +52,9 @@ public class DFragment extends android.support.v4.app.Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_d, container,false);
+        getInChildThread("http://192.168.88.1:8080/getuserinfo");
+
+
         View myBottomView = View.inflate(getActivity(), R.layout.my_bottom_layout, null);
         mList = (ScrollDisabledListView) myBottomView.findViewById(R.id.dynamicListview);
 //        mList.setEnabled(false);
@@ -115,7 +137,55 @@ public class DFragment extends android.support.v4.app.Fragment {
         return view;
     }
 
+    private void getInChildThread(String url) {
 
+
+
+        OkHttpClient client = new OkHttpClient.Builder()
+                .readTimeout(5, TimeUnit.SECONDS)
+                .build();
+
+        //post请求来获得数据
+        //创建一个RequestBody，存放重要数据的键值对
+        RequestBody body = new FormBody.Builder()
+                .add("code","").build();
+        //创建一个请求对象，传入URL地址和相关数据的键值对的对象
+        final Request request = new Request.Builder()
+                .url(url)
+                .post(body).build();
+
+        //创建一个能处理请求数据的操作类
+        Call call = client.newCall(request);
+
+        //使用异步任务的模式请求数据
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e("TAG","错误信息：" + e.toString());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String result=response.body().string();
+
+                JSONObject data = null;
+                try {
+                    data = new JSONObject(result);
+                    System.out.println(data);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        });
+
+
+
+
+
+    }
 
     //提示消息
     public void showToast(String str) {

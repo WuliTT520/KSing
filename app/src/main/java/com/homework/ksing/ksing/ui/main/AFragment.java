@@ -112,6 +112,8 @@ public class AFragment extends android.support.v4.app.Fragment {
 
         return view;
     }
+
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);

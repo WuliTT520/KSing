@@ -88,6 +88,7 @@ public class MainActivity extends FragmentActivity {
                 .normalIconItems(normalIcon)
                 .selectIconItems(selectIcon)
                 .fragmentList(fragments)
+                .navigitionBackground(Color.parseColor("#FFFFFF"))
                 .iconSize(30)
                 .selectTextColor(Color.parseColor("#F14F44"))
                 .fragmentManager(getSupportFragmentManager())

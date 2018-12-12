@@ -64,8 +64,10 @@ public class KgLoginActivity extends Activity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*
                 Intent intent=new Intent(KgLoginActivity.this, MainActivity.class);
                 startActivity(intent);
+                */
 //                if(usercode.getText().toString().equals("123456")&&password.getText().toString().equals("123456")){
 //                    editor = sp.edit();
 //                    editor.putBoolean("isLogin",true);
@@ -74,7 +76,7 @@ public class KgLoginActivity extends Activity {
 //                    startActivity(intent);
 
 //                }
-/*
+
 
                 OkHttpClient client = new OkHttpClient.Builder()
                         .readTimeout(5, TimeUnit.SECONDS)
@@ -103,9 +105,11 @@ public class KgLoginActivity extends Activity {
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
                         result=response.body().string();
+                        System.out.println(response.header("cookie"));
                         JSONObject data = null;
                         try {
                             data = new JSONObject(result);
+
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -115,6 +119,11 @@ public class KgLoginActivity extends Activity {
 
                             editor = sp.edit();
                             editor.putBoolean("isLogin",true);
+                            try {
+                                editor.putString("code", (String) data.get("code"));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                             editor.commit();
                             Intent intent=new Intent(KgLoginActivity.this, MainActivity.class);
                             startActivity(intent);
@@ -131,7 +140,7 @@ public class KgLoginActivity extends Activity {
                         }
                     }
                 });
-*/
+
             }
         });
     }
