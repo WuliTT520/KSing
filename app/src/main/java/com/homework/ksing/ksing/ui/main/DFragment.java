@@ -1,6 +1,8 @@
 package com.homework.ksing.ksing.ui.main;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Looper;
 import android.support.annotation.Nullable;
@@ -48,6 +50,7 @@ public class DFragment extends android.support.v4.app.Fragment {
     private LinearLayout myBottom;
     private ScrollDisabledListView mList;
     private List contacts=new ArrayList(0);
+    private SharedPreferences sp;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -139,7 +142,7 @@ public class DFragment extends android.support.v4.app.Fragment {
 
     private void getInChildThread(String url) {
 
-
+        sp=this.getActivity().getSharedPreferences("userInfo", Context.MODE_PRIVATE);
 
         OkHttpClient client = new OkHttpClient.Builder()
                 .readTimeout(5, TimeUnit.SECONDS)
@@ -150,7 +153,7 @@ public class DFragment extends android.support.v4.app.Fragment {
         RequestBody body = new FormBody.Builder()
                 .add("code","").build();
         //创建一个请求对象，传入URL地址和相关数据的键值对的对象
-        final Request request = new Request.Builder()
+        final Request request = new Request.Builder().addHeader("cookie",sp.getString("sessionID",""))
                 .url(url)
                 .post(body).build();
 

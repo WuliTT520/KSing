@@ -77,7 +77,7 @@ public class KgLoginActivity extends Activity {
                         .add("password", password.getText().toString()).build();
                 //创建一个请求对象，传入URL地址和相关数据的键值对的对象
                 final Request request = new Request.Builder()
-                        .url("http://10.11.181.29:8080/login")
+                        .url("http://10.11.186.14:8080/login")
                         .post(body).build();
 
                 //创建一个能处理请求数据的操作类
