@@ -64,18 +64,6 @@ public class KgLoginActivity extends Activity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*
-                Intent intent=new Intent(KgLoginActivity.this, MainActivity.class);
-                startActivity(intent);
-                */
-//                if(usercode.getText().toString().equals("123456")&&password.getText().toString().equals("123456")){
-//                    editor = sp.edit();
-//                    editor.putBoolean("isLogin",true);
-//                    editor.commit();
-//                    Intent intent=new Intent(KgLoginActivity.this, MainActivity.class);
-//                    startActivity(intent);
-
-//                }
 
 
                 OkHttpClient client = new OkHttpClient.Builder()
@@ -89,7 +77,7 @@ public class KgLoginActivity extends Activity {
                         .add("password", password.getText().toString()).build();
                 //创建一个请求对象，传入URL地址和相关数据的键值对的对象
                 final Request request = new Request.Builder()
-                        .url("http://192.168.88.1:8080/login")
+                        .url("http://10.11.181.29:8080/login")
                         .post(body).build();
 
                 //创建一个能处理请求数据的操作类
@@ -116,8 +104,13 @@ public class KgLoginActivity extends Activity {
                         }
 
                         if(data!=null){
+                            String sessionId=response.header("Set-Cookie");
+                            System.out.println("*****************************");
+                            Log.w("session",sessionId);
+                            System.out.println("*****************************");
 
                             editor = sp.edit();
+                            editor.putString("sessionID",sessionId);
                             editor.putBoolean("isLogin",true);
                             try {
                                 editor.putString("code", (String) data.get("code"));
