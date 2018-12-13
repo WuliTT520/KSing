@@ -55,7 +55,7 @@ public class DFragment extends android.support.v4.app.Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_d, container,false);
-        getInChildThread("http://192.168.88.1:8080/getuserinfo");
+        getInChildThread("http://10.11.181.29:8080/getuserinfo");
 
 
         View myBottomView = View.inflate(getActivity(), R.layout.my_bottom_layout, null);
