@@ -170,6 +170,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/kg_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -195,6 +196,7 @@
         android:paddingRight="30dp">
 
         <LinearLayout
+            android:id="@+id/send_gift"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -226,6 +228,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/share"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -257,6 +260,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/elnumLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"

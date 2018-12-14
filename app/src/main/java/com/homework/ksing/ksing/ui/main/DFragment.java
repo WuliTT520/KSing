@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.circlerefresh.CircleRefreshLayout;
@@ -22,6 +23,7 @@ import com.homework.ksing.ksing.activity.KgLoginActivity;
 import com.homework.ksing.ksing.ui.MainActivity;
 import com.homework.ksing.ksing.view.ScrollDisabledListView;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -51,17 +53,33 @@ public class DFragment extends android.support.v4.app.Fragment {
     private ScrollDisabledListView mList;
     private List contacts=new ArrayList(0);
     private SharedPreferences sp;
+    private TextView uName;
+    private TextView fNum;
+    private TextView foNum;
+
+    private String[] name=new String[100];
+    private int[] picture=new int[100];
+    private String[] time=new String[100];
+    private String[] text=new String[100];
+    private int[] picture1=new int[100];
+    private String[] songname=new String[100];
+    private String[] num=new String[100];
+    private String[]elnum=new String[100];
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_d, container,false);
-        getInChildThread("http://10.11.181.29:8080/getuserinfo");
-
+        getInChildThread("http://10.11.186.14:8080/getUserInfo");
+         uName=view.findViewById(R.id.u_name);
+        fNum=view.findViewById(R.id.friendNum);
+        foNum=view.findViewById(R.id.focusedNum);
 
         View myBottomView = View.inflate(getActivity(), R.layout.my_bottom_layout, null);
         mList = (ScrollDisabledListView) myBottomView.findViewById(R.id.dynamicListview);
 //        mList.setEnabled(false);
         mList.setFocusable(false);
+        /*
         String[] name = {"张舒杨","张舒杨","张舒杨","张舒杨","张舒杨"};
         int[] picture = {R.drawable.touxiang1,R.drawable.touxiang1,R.drawable.touxiang1,R.drawable.touxiang1,R.drawable.touxiang1};
         String[] time = {"15:39","15:39","15:39","15:39","15:39"};
@@ -96,7 +114,7 @@ public class DFragment extends android.support.v4.app.Fragment {
             }
         });
 
-
+*/
 
         myBottom=view.findViewById(R.id.myBottom);
 
@@ -174,8 +192,104 @@ public class DFragment extends android.support.v4.app.Fragment {
                 JSONObject data = null;
                 try {
                     data = new JSONObject(result);
-                    System.out.println(data);
+                    System.out.println(data.toString());
 
+                     System.out.println(data.getString("user_name"));
+
+                    uName.setText(data.getString("user_name")+"");
+                    fNum.setText(data.getString("friend_num")+"");
+                    foNum.setText(data.getString("focused_num")+"");
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                getInChildThread1("http://10.11.186.14:8080/getMyDynamic");
+
+            }
+        });
+
+
+
+
+
+    }
+
+    private void getInChildThread1(String url) {
+
+        sp=this.getActivity().getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+
+        OkHttpClient client = new OkHttpClient.Builder()
+                .readTimeout(5, TimeUnit.SECONDS)
+                .build();
+
+        //post请求来获得数据
+        //创建一个RequestBody，存放重要数据的键值对
+        RequestBody body = new FormBody.Builder()
+                .add("code","").build();
+        //创建一个请求对象，传入URL地址和相关数据的键值对的对象
+        final Request request = new Request.Builder().addHeader("cookie",sp.getString("sessionID",""))
+                .url(url)
+                .post(body).build();
+
+        //创建一个能处理请求数据的操作类
+        Call call = client.newCall(request);
+
+        //使用异步任务的模式请求数据
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e("TAG","错误信息：" + e.toString());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String result=response.body().string();
+                JSONArray data = null;
+                try {
+                    data = new JSONArray(result);
+                    System.out.println(data);
+                    for(int i=0;i<data.length();i++)
+                    {
+                        JSONObject jsonObject=data.getJSONObject(i);
+                        name[i]=jsonObject.getString("name");
+                        System.out.println(name[i]);
+                        time[i] ="15:39";
+                        text[i] =jsonObject.getString("user_text");
+                        picture[i]=R.drawable.touxiang1;
+                        picture1[i]=R.drawable.songimg;
+                        songname[i] = jsonObject.getString("song_name");
+                        num[i]="3";
+                        elnum[i]=jsonObject.getString("evaluate_num");
+
+                    }
+                    for (int i=0;i<data.length();i++) {
+
+                        HashMap map=new HashMap<String,Object>();
+                        map.put("name",name[i]);
+                        map.put("time",time[i]);
+                        map.put("picture",picture[i]);
+                        map.put("text",text[i]);
+                        map.put("num",num [i]);
+                        map.put("picture1",picture1[i]);
+                        map.put("songname",songname[i]);
+                        map.put("elnum",elnum[i]);
+                        contacts.add(map);
+
+                    }
+                    SimpleAdapter adapter=new SimpleAdapter(getActivity(),contacts,R.layout.dynamic_list,new String[]{"name","time","picture","text","num","picture1","songname","elnum"}
+                            ,new int[]{R.id.name,R.id.time,R.id.picture,R.id.text,R.id.num,R.id.picture2,R.id.songname,R.id.elnum});
+
+                    mList.setAdapter(adapter);
+
+                    mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            Toast.makeText(getActivity(),"111111111111111！",Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+
+                    System.out.println(data);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

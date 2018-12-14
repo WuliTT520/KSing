@@ -11,7 +11,7 @@ import android.os.Bundle;
 import com.homework.ksing.ksing.R;
 import com.homework.ksing.ksing.ui.MainActivity;
 
-public class WelcomeActivity extends Activity {
+public class WelcomeActivity extends AppCompatActivity {
     SharedPreferences sp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

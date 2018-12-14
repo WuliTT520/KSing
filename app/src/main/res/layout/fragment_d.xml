@@ -83,15 +83,16 @@
 
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="@color/white">
 
                     <com.homework.ksing.ksing.ui.main.CircleImageView
                         android:id="@+id/user_dp"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginStart="24dp"
                         android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp"
                         android:src="@drawable/touxiang"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -102,9 +103,9 @@
                         android:id="@+id/u_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp"
                         android:text="南烛"
                         android:textColor="@color/black"
                         android:textSize="20sp"
@@ -117,9 +118,9 @@
                         android:id="@+id/imageView25"
                         android:layout_width="63dp"
                         android:layout_height="30dp"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginStart="4dp"
                         android:layout_marginTop="20dp"
-                        android:layout_marginBottom="8dp"
                         android:src="@drawable/auh"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/u_name"
@@ -130,6 +131,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/white"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -139,7 +141,6 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/textView25"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
@@ -163,7 +164,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/textView26"
+                            android:id="@+id/focusedNum"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
@@ -187,7 +188,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/textView28"
+                            android:id="@+id/friendNum"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
@@ -215,6 +216,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/white"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent">
@@ -227,9 +229,9 @@
                             android:id="@+id/textView30"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
                             android:layout_marginStart="28dp"
                             android:layout_marginTop="8dp"
-                            android:layout_marginBottom="8dp"
                             android:text="等级"
                             android:textColor="@android:color/darker_gray"
                             android:textSize="16sp"
@@ -242,9 +244,9 @@
                             android:id="@+id/imageView26"
                             android:layout_width="60dp"
                             android:layout_height="30dp"
+                            android:layout_marginBottom="8dp"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
-                            android:layout_marginBottom="8dp"
                             android:src="@drawable/a9x"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/textView30"
@@ -254,9 +256,9 @@
                             android:id="@+id/imageView27"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
+                            android:layout_marginBottom="8dp"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
-                            android:layout_marginBottom="8dp"
                             android:src="@drawable/atv"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/imageView26"
@@ -271,9 +273,9 @@
                             android:id="@+id/textView31"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
                             android:layout_marginStart="28dp"
                             android:layout_marginTop="8dp"
-                            android:layout_marginBottom="8dp"
                             android:text="K歌号"
                             android:textColor="@android:color/darker_gray"
                             android:textSize="16sp"
@@ -285,9 +287,9 @@
                             android:id="@+id/textView33"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
-                            android:layout_marginBottom="8dp"
                             android:text="admin"
                             android:textColor="@color/black"
                             android:textSize="18sp"
@@ -304,9 +306,9 @@
                             android:id="@+id/textView32"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
                             android:layout_marginStart="28dp"
                             android:layout_marginTop="8dp"
-                            android:layout_marginBottom="8dp"
                             android:text="签名"
                             android:textColor="@android:color/darker_gray"
                             android:textSize="16sp"
@@ -318,9 +320,9 @@
                             android:id="@+id/textView34"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
-                            android:layout_marginBottom="8dp"
                             android:text="点击设置自己的个性签名"
                             android:textColor="@android:color/darker_gray"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -331,9 +333,9 @@
                             android:id="@+id/imageView28"
                             android:layout_width="10dp"
                             android:layout_height="15dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="16dp"
                             android:layout_marginBottom="8dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginTop="8dp"
                             android:src="@drawable/bq5"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -348,10 +350,10 @@
                             android:id="@+id/imageView29"
                             android:layout_width="25dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginEnd="8dp"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="4dp"
-                            android:layout_marginEnd="8dp"
-                            android:layout_marginBottom="8dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.498"
@@ -370,6 +372,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/white"
                     android:orientation="vertical">
 
                     <LinearLayout

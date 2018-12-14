@@ -14,8 +14,8 @@ import android.widget.TextView;
 import com.homework.ksing.ksing.R;
 import com.homework.ksing.ksing.ui.MainActivity;
 
-public class LoginActivity extends Activity {
-    private TextView kg_login,wecharlogin;
+public class LoginActivity extends AppCompatActivity {
+    private TextView kg_login;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,21 +32,12 @@ public class LoginActivity extends Activity {
         }
         setContentView(R.layout.activity_login);
         kg_login=findViewById(R.id.kg_login);
-        wecharlogin=findViewById(R.id.textView4);
+
 
         kg_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(LoginActivity.this,KgLoginActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        wecharlogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(LoginActivity.this,NotificationDemoActivity.class);
                 startActivity(intent);
                 finish();
             }
