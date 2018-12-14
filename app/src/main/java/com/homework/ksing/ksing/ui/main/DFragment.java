@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 import com.example.circlerefresh.CircleRefreshLayout;
 import com.homework.ksing.ksing.R;
 import com.homework.ksing.ksing.activity.KgLoginActivity;
+import com.homework.ksing.ksing.activity.SettingActivity;
 import com.homework.ksing.ksing.ui.MainActivity;
 import com.homework.ksing.ksing.view.ScrollDisabledListView;
 
@@ -56,6 +58,7 @@ public class DFragment extends android.support.v4.app.Fragment {
     private TextView uName;
     private TextView fNum;
     private TextView foNum;
+    private ImageView setting;
 
     private String[] name=new String[100];
     private int[] picture=new int[100];
@@ -74,7 +77,14 @@ public class DFragment extends android.support.v4.app.Fragment {
          uName=view.findViewById(R.id.u_name);
         fNum=view.findViewById(R.id.friendNum);
         foNum=view.findViewById(R.id.focusedNum);
-
+        setting=view.findViewById(R.id.setting);
+        setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getActivity(), SettingActivity.class);
+                startActivity(intent);
+            }
+        });
         View myBottomView = View.inflate(getActivity(), R.layout.my_bottom_layout, null);
         mList = (ScrollDisabledListView) myBottomView.findViewById(R.id.dynamicListview);
 //        mList.setEnabled(false);

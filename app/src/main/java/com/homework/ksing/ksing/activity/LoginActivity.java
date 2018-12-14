@@ -16,6 +16,7 @@ import com.homework.ksing.ksing.ui.MainActivity;
 
 public class LoginActivity extends AppCompatActivity {
     private TextView kg_login;
+    private TextView wechat;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +33,14 @@ public class LoginActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_login);
         kg_login=findViewById(R.id.kg_login);
-
+        wechat=findViewById(R.id.textView4);
+        wechat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(LoginActivity.this,NotificationDemoActivity.class);
+                startActivity(intent);
+            }
+        });
 
         kg_login.setOnClickListener(new View.OnClickListener() {
             @Override

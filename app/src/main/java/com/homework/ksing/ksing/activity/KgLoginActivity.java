@@ -15,6 +15,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.homework.ksing.ksing.R;
@@ -42,6 +43,7 @@ public class KgLoginActivity extends AppCompatActivity {
     private String result;
     SharedPreferences sp;
     SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +63,6 @@ public class KgLoginActivity extends AppCompatActivity {
         usercode=findViewById(R.id.usercode);
         password=findViewById(R.id.password);
         login=findViewById(R.id.login);
-
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
