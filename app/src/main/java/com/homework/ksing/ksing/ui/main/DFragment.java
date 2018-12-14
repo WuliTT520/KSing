@@ -22,6 +22,7 @@ import com.example.circlerefresh.CircleRefreshLayout;
 import com.homework.ksing.ksing.R;
 import com.homework.ksing.ksing.activity.KgLoginActivity;
 import com.homework.ksing.ksing.activity.SettingActivity;
+import com.homework.ksing.ksing.ui.EvaluateActivity;
 import com.homework.ksing.ksing.ui.MainActivity;
 import com.homework.ksing.ksing.view.ScrollDisabledListView;
 
@@ -52,6 +53,7 @@ import static android.content.ContentValues.TAG;
 public class DFragment extends android.support.v4.app.Fragment {
     private CircleRefreshLayout mRefreshLayout;
     private LinearLayout myBottom;
+    private MyAdapter adapter;
     private ScrollDisabledListView mList;
     private List contacts=new ArrayList(0);
     private SharedPreferences sp;
@@ -59,12 +61,12 @@ public class DFragment extends android.support.v4.app.Fragment {
     private TextView fNum;
     private TextView foNum;
     private ImageView setting;
-
+    private List<String>contacts1=new ArrayList();
     private String[] name=new String[100];
-    private int[] picture=new int[100];
+    private String[] picture=new String[100];
     private String[] time=new String[100];
     private String[] text=new String[100];
-    private int[] picture1=new int[100];
+    private String[] picture1=new String[100];
     private String[] songname=new String[100];
     private String[] num=new String[100];
     private String[]elnum=new String[100];
@@ -235,7 +237,7 @@ public class DFragment extends android.support.v4.app.Fragment {
         //post请求来获得数据
         //创建一个RequestBody，存放重要数据的键值对
         RequestBody body = new FormBody.Builder()
-                .add("code","").build();
+                .build();
         //创建一个请求对象，传入URL地址和相关数据的键值对的对象
         final Request request = new Request.Builder().addHeader("cookie",sp.getString("sessionID",""))
                 .url(url)
@@ -265,8 +267,8 @@ public class DFragment extends android.support.v4.app.Fragment {
                         System.out.println(name[i]);
                         time[i] ="15:39";
                         text[i] =jsonObject.getString("user_text");
-                        picture[i]=R.drawable.touxiang1;
-                        picture1[i]=R.drawable.songimg;
+                        picture[i]=jsonObject.getString("user_dp");
+                        picture1[i]=jsonObject.getString("song_picture");
                         songname[i] = jsonObject.getString("song_name");
                         num[i]="3";
                         elnum[i]=jsonObject.getString("evaluate_num");
@@ -283,9 +285,12 @@ public class DFragment extends android.support.v4.app.Fragment {
                         map.put("picture1",picture1[i]);
                         map.put("songname",songname[i]);
                         map.put("elnum",elnum[i]);
+                        contacts1.add(i+"  author:Leslie___Cheung");
+
                         contacts.add(map);
 
                     }
+                    /*
                     SimpleAdapter adapter=new SimpleAdapter(getActivity(),contacts,R.layout.dynamic_list,new String[]{"name","time","picture","text","num","picture1","songname","elnum"}
                             ,new int[]{R.id.name,R.id.time,R.id.picture,R.id.text,R.id.num,R.id.picture2,R.id.songname,R.id.elnum});
 
@@ -298,8 +303,45 @@ public class DFragment extends android.support.v4.app.Fragment {
                         }
                     });
 
+                    */
+                    adapter = new MyAdapter(getActivity(), name,picture,time,text,picture1,songname,num,elnum,contacts1);
+                    mList.setAdapter(adapter);
+                    adapter.setOnItemElnumClickListener(new MyAdapter.onItemElnumClickListener() {
+                        @Override
+                        public void onElnumClick(int i) {
+                            System.out.println("评论    "+i);
+                            Intent intent=new Intent(getActivity(), EvaluateActivity.class);
+                            startActivity(intent);
+                        }
+                    });
+                    adapter.setOnItemKgClickListener(new MyAdapter.onItemKgClickListener() {
+                        @Override
+                        public void onKgClick(int i) {
+                            System.out.println("K歌    "+i);
+                        }
+                    });
+                    adapter.setOnItemGiftClickListener(new MyAdapter.onItemGiftClickListener() {
+                        @Override
+                        public void onGiftClick(int i) {
+                            System.out.println("送礼    "+i);
+                        }
+                    });
+                    adapter.setOnItemShareClickListener(new MyAdapter.onItemShareClickListener() {
+                        @Override
+                        public void onShareClick(int i) {
+                            System.out.println("分享    "+i);
+                            Intent intent=new Intent(Intent.ACTION_SEND);
+
+                            intent.setType("text/plain");
+                            intent.putExtra(Intent.EXTRA_SUBJECT, "Share");
+                            intent.putExtra(Intent.EXTRA_TEXT, "我在全民K歌看到了一条有趣的动态，快来围观！！");
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(Intent.createChooser(intent, getActivity().getTitle()));
+                        }
+                    });
 
                     System.out.println(data);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -307,7 +349,6 @@ public class DFragment extends android.support.v4.app.Fragment {
 
             }
         });
-
 
 
 

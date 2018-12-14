@@ -1,30 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_height="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android" >
+    android:layout_height="match_parent"
+    tools:context=".ui.EditUserInfoActivity">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg"
         android:orientation="vertical"
         tools:context=".activity.SettingActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="44dp"
-            android:background="@color/white"
+            android:background="@color/red"
             android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/fanhui"
                 android:layout_width="32dp"
                 android:layout_height="wrap_content"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:src="@drawable/bm2"
-                app:srcCompat="@drawable/bm2" />
+                android:src="@drawable/a0g" />
 
             <TextView
                 android:id="@+id/textView13"
@@ -33,8 +32,8 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:paddingLeft="10dp"
-                android:text="设置"
-                android:textColor="@color/black"
+                android:text="编辑资料"
+                android:textColor="@color/white"
                 android:textSize="18sp" />
 
             <TextView
@@ -44,7 +43,7 @@
                 android:gravity="center_vertical"
                 android:paddingRight="10dp"
                 android:text="帮助与反馈"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -56,21 +55,22 @@
             android:background="@color/white"
             android:orientation="horizontal">
 
+            <TextView
+                android:id="@+id/textView42"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:text="修改头像"
+                android:textColor="@color/black" />
+
             <com.homework.ksing.ksing.ui.main.CircleImageView
                 android:id="@+id/imageView24"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_margin="8dp"
-                app:srcCompat="@drawable/aee" />
-
-            <TextView
-                android:id="@+id/textView42"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_weight="1"
-                android:text="哈哈"
-                android:textColor="@color/black" />
+                app:srcCompat="@drawable/touxiang" />
 
             <ImageView
                 android:id="@+id/imageView23"
@@ -99,10 +99,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
-                    android:layout_weight="1"
+                    android:layout_weight="5"
                     android:gravity="center_vertical"
-                    android:text="VIP中心"
+                    android:text="昵称"
                     android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="南烛" />
 
                 <ImageView
                     android:layout_width="16dp"
@@ -123,10 +130,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
-                    android:layout_weight="1"
+                    android:layout_weight="6"
                     android:gravity="center_vertical"
-                    android:text="关联微信账号"
+                    android:text="K歌号"
                     android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView26"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="admin" />
 
                 <ImageView
                     android:layout_width="16dp"
@@ -147,10 +161,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
-                    android:layout_weight="1"
+                    android:layout_weight="5"
                     android:gravity="center_vertical"
-                    android:text="关联手机号"
+                    android:text="性别"
                     android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView28"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="男" />
 
                 <ImageView
                     android:layout_width="16dp"
@@ -179,10 +200,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
-                    android:layout_weight="1"
+                    android:layout_weight="5"
                     android:gravity="center_vertical"
-                    android:text="隐私权限"
+                    android:text="现居地"
                     android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView43"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="广东-深圳" />
 
                 <ImageView
                     android:layout_width="16dp"
@@ -203,10 +231,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
-                    android:layout_weight="1"
+                    android:layout_weight="5"
                     android:gravity="center_vertical"
-                    android:text="消息设置"
+                    android:text="个人签名"
                     android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView48"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="这个人很懒" />
 
                 <ImageView
                     android:layout_width="16dp"
@@ -235,10 +270,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
-                    android:layout_weight="1"
+                    android:layout_weight="5"
                     android:gravity="center_vertical"
-                    android:text="帮助与反馈"
+                    android:text="学校"
                     android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView49"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="杭州电子科技大学信息工程学院" />
 
                 <ImageView
                     android:layout_width="16dp"
@@ -259,10 +301,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
-                    android:layout_weight="1"
+                    android:layout_weight="5"
                     android:gravity="center_vertical"
-                    android:text="上传本地伴奏"
+                    android:text="职业"
                     android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView50"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="学生" />
 
                 <ImageView
                     android:layout_width="16dp"
@@ -283,10 +332,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
-                    android:layout_weight="1"
+                    android:layout_weight="5"
                     android:gravity="center_vertical"
-                    android:text="申请成为认证主播"
+                    android:text="家乡"
                     android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView51"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="临安" />
 
                 <ImageView
                     android:layout_width="16dp"
@@ -307,10 +363,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
-                    android:layout_weight="1"
+                    android:layout_weight="5"
                     android:gravity="center_vertical"
-                    android:text="绿钻"
+                    android:text="身高"
                     android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView52"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="180" />
 
                 <ImageView
                     android:layout_width="16dp"
@@ -336,22 +399,22 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
-                    android:layout_weight="1"
+                    android:layout_weight="5"
                     android:gravity="center_vertical"
-                    android:text="关于全民K歌"
+                    android:text="不显示活跃状态"
                     android:textColor="@color/black" />
 
                 <ImageView
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="16dp"
-                    android:src="@drawable/a0m"
-                    app:srcCompat="@drawable/a0m" />
+                    android:id="@+id/imageView20"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:src="@drawable/a_v" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -360,37 +423,24 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
-                    android:layout_weight="1"
+                    android:layout_weight="5"
                     android:gravity="center_vertical"
-                    android:text="清除缓存"
+                    android:text="不在附近的人中显示自己"
                     android:textColor="@color/black" />
 
                 <ImageView
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="16dp"
-                    android:src="@drawable/a0m"
-                    app:srcCompat="@drawable/a0m" />
+                    android:id="@+id/imageView22"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:src="@drawable/a_v" />
+
             </LinearLayout>
         </LinearLayout>
 
-        <Button
-            android:id="@+id/logout"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginBottom="30dp"
-            android:layout_marginLeft="60dp"
-            android:layout_marginRight="60dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/logout_bg"
-            android:text="退出当前账号"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
     </LinearLayout>
 </ScrollView>
