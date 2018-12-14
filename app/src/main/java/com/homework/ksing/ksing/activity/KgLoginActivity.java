@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.homework.ksing.ksing.R;
+import com.homework.ksing.ksing.Service.GetMsgService;
 import com.homework.ksing.ksing.controller.MyURL;
 import com.homework.ksing.ksing.ui.MainActivity;
 
@@ -123,6 +124,8 @@ public class KgLoginActivity extends AppCompatActivity {
                             editor.commit();
                             Intent intent=new Intent(KgLoginActivity.this, MainActivity.class);
                             startActivity(intent);
+
+
                             Looper.prepare();
                             Toast.makeText(KgLoginActivity.this,"登陆成功！",Toast.LENGTH_SHORT).show();
                             finish();

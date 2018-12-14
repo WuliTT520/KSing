@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.homework.ksing.ksing.Service.GetMsgService;
 import com.homework.ksing.ksing.ui.main.AFragment;
 import com.homework.ksing.ksing.ui.main.DFragment;
 import com.next.easynavigition.constant.Anim;
@@ -75,7 +77,8 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
 
 
-
+        Intent serviceIntent =new Intent(MainActivity.this,GetMsgService.class);
+        startService(serviceIntent);
 
         navigitionBar = findViewById(R.id.navigitionBar);
 

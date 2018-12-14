@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.homework.ksing.ksing.R;
+import com.homework.ksing.ksing.Service.GetMsgService;
 import com.homework.ksing.ksing.ui.MainActivity;
 
 public class WelcomeActivity extends AppCompatActivity {
@@ -18,7 +19,6 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         sp=this.getSharedPreferences("userInfo", Context.MODE_PRIVATE);
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
