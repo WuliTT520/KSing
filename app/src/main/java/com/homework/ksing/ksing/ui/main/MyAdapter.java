@@ -12,6 +12,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.homework.ksing.ksing.R;
+import com.homework.ksing.ksing.adapter.MyImageView;
+import com.homework.ksing.ksing.controller.MyURL;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,16 +21,18 @@ import java.util.List;
 public class MyAdapter extends BaseAdapter {
     private Context mContext;
     private String[] name=new String[100];
-    private int[] picture=new int[100];
+    private String[] picture=new String[100];
     private String[] time=new String[100];
     private String[] text=new String[100];
-    private int[] picture1=new int[100];
+    private String[] picture1=new String[100];
     private String[] songname=new String[100];
     private String[] num=new String[100];
     private String[]elnum=new String[100];
     private List <String>contacts = new ArrayList<>();
+    private MyURL url=new MyURL();
 
-    public MyAdapter(Context context,String []name,int[] picture,String[] time,String[] text,int[] picture1,String[] songname,String[] num,String[]elnum,List <String>contacts) {
+
+    public MyAdapter(Context context,String []name,String[] picture,String[] time,String[] text,String[] picture1,String[] songname,String[] num,String[]elnum,List <String>contacts) {
         mContext = context;
         this.name=name;
         this.picture=picture;
@@ -85,8 +89,8 @@ public class MyAdapter extends BaseAdapter {
         viewHolder.num.setText(num[i]);
         viewHolder.songname.setText(songname[i]);
         viewHolder.elnum.setText(elnum[i]);
-        viewHolder.picture.setImageResource(picture[i]);
-        viewHolder.picture2.setImageResource(picture1[i]);
+        viewHolder.picture.setImageURL(url.getURL()+picture[i]);
+        viewHolder.picture2.setImageURL(url.getURL()+picture1[i]);
 
 
 //评论点击事件
@@ -163,8 +167,8 @@ public class MyAdapter extends BaseAdapter {
         TextView num;
         TextView songname;
         TextView elnum;
-        ImageView picture;
-        ImageView picture2;
+        CircleImageView picture;
+        MyImageView picture2;
         LinearLayout elnumLayout;
         TextView kg_btn;
         LinearLayout send_gift;

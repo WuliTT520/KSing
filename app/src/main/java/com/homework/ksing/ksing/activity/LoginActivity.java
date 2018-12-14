@@ -12,6 +12,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.homework.ksing.ksing.R;
+import com.homework.ksing.ksing.adapter.MyImageView;
 import com.homework.ksing.ksing.ui.MainActivity;
 
 public class LoginActivity extends AppCompatActivity {
@@ -50,5 +51,9 @@ public class LoginActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+
+
+
     }
 }

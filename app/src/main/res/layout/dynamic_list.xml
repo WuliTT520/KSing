@@ -82,7 +82,7 @@
             android:orientation="vertical"
             tools:layout_editor_absoluteX="117dp">
 
-            <ImageView
+            <com.homework.ksing.ksing.adapter.MyImageView
                 android:id="@+id/picture2"
                 android:layout_width="100dp"
                 android:layout_height="100dp"

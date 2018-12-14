@@ -52,10 +52,10 @@ public class AFragment extends android.support.v4.app.Fragment {
     private List<String>contacts1=new ArrayList();
     private SharedPreferences sp;
     private String[] name=new String[100];
-    private int[] picture=new int[100];
+    private String[] picture=new String[100];
     private String[] time=new String[100];
     private String[] text=new String[100];
-    private int[] picture1=new int[100];
+    private String[] picture1=new String[100];
     private String[] songname=new String[100];
     private String[] num=new String[100];
     private String[]elnum=new String[100];
@@ -165,8 +165,8 @@ public class AFragment extends android.support.v4.app.Fragment {
                         System.out.println(name[i]);
                         time[i] ="15:39";
                         text[i] =jsonObject.getString("user_text");
-                        picture[i]=R.drawable.touxiang1;
-                        picture1[i]=R.drawable.songimg;
+                        picture[i]=jsonObject.getString("user_dp");
+                        picture1[i]=jsonObject.getString("song_picture");
                         songname[i] = jsonObject.getString("song_name");
                         num[i]="3";
                         elnum[i]=jsonObject.getString("evaluate_num");
