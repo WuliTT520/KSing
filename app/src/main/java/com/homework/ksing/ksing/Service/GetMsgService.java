@@ -37,7 +37,7 @@ public class GetMsgService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.w(TAG,"创建服务123");
+//        Log.w(TAG,"创建服务123");
 
         timer=new Timer();
         timer.schedule(new TimerTask() {
@@ -65,7 +65,7 @@ public class GetMsgService extends Service {
                             Log.w("success",result);
                             NotificationManager manager=(NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                             NotificationChannel channel = new NotificationChannel("1",
-                                    "Channel1", NotificationManager.IMPORTANCE_DEFAULT);
+                                    "动态消息", NotificationManager.IMPORTANCE_DEFAULT);
                             channel.enableLights(true); //是否在桌面icon右上角展示小红点
                             channel.setLightColor(R.color.red); //小红点颜色
                             channel.setShowBadge(true); //是否在久按桌面图标时显示此渠道的通知
