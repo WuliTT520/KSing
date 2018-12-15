@@ -22,6 +22,7 @@ import com.example.circlerefresh.CircleRefreshLayout;
 import com.homework.ksing.ksing.R;
 import com.homework.ksing.ksing.activity.KgLoginActivity;
 import com.homework.ksing.ksing.activity.SettingActivity;
+import com.homework.ksing.ksing.controller.MyURL;
 import com.homework.ksing.ksing.ui.EvaluateActivity;
 import com.homework.ksing.ksing.ui.MainActivity;
 import com.homework.ksing.ksing.view.ScrollDisabledListView;
@@ -60,6 +61,7 @@ public class DFragment extends android.support.v4.app.Fragment {
     private TextView uName;
     private TextView fNum;
     private TextView foNum;
+    private CircleImageView userDp;
     private ImageView setting;
     private List<String>contacts1=new ArrayList();
     private String[] name=new String[100];
@@ -70,12 +72,13 @@ public class DFragment extends android.support.v4.app.Fragment {
     private String[] songname=new String[100];
     private String[] num=new String[100];
     private String[]elnum=new String[100];
-
+    private MyURL myURL=new MyURL();
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_d, container,false);
-        getInChildThread("http://10.11.186.14:8080/getUserInfo");
+        getInChildThread(myURL.getURL()+"/getUserInfo");
+        userDp=view.findViewById(R.id.user_dp);
          uName=view.findViewById(R.id.u_name);
         fNum=view.findViewById(R.id.friendNum);
         foNum=view.findViewById(R.id.focusedNum);
@@ -207,7 +210,7 @@ public class DFragment extends android.support.v4.app.Fragment {
                     System.out.println(data.toString());
 
                      System.out.println(data.getString("user_name"));
-
+                    userDp.setImageURL(myURL.getURL()+data.getString("user_dp"));
                     uName.setText(data.getString("user_name")+"");
                     fNum.setText(data.getString("friend_num")+"");
                     foNum.setText(data.getString("focused_num")+"");
@@ -215,7 +218,7 @@ public class DFragment extends android.support.v4.app.Fragment {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                getInChildThread1("http://10.11.186.14:8080/getMyDynamic");
+                getInChildThread1(myURL.getURL()+"/getMyDynamic");
 
             }
         });

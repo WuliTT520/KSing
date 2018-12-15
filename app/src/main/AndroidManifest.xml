@@ -26,11 +26,14 @@
         </activity>
         <activity android:name=".activity.NotificationDemoActivity" />
         <activity android:name=".activity.SettingActivity" />
-        <activity android:name=".ui.EditUserInfoActivity"></activity>
+        <activity android:name=".ui.EditUserInfoActivity" />
+
         <service
             android:name=".Service.GetMsgService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+
+        <activity android:name=".ui.UpdateActivity"></activity>
     </application>
 
 </manifest>

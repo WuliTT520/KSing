@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.circlerefresh.CircleRefreshLayout;
 import com.homework.ksing.ksing.R;
+import com.homework.ksing.ksing.controller.MyURL;
 import com.homework.ksing.ksing.entity.DynamicState;
 import com.homework.ksing.ksing.ui.EvaluateActivity;
 
@@ -60,11 +61,13 @@ public class AFragment extends android.support.v4.app.Fragment {
     private String[] num=new String[100];
     private String[]elnum=new String[100];
     private MyAdapter adapter;
+
+    private MyURL myURL=new MyURL();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_a, container,false);
-        getInChildThread("http://10.11.186.14:8080/getDynamicState");
+        getInChildThread(myURL.getURL()+"/getDynamicState");
         mRefreshLayout = (CircleRefreshLayout) view.findViewById(R.id.refresh_layout1);
         mList = (ListView) view.findViewById(R.id.list1);
 

@@ -20,7 +20,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/fanhui"
+                android:id="@+id/back"
                 android:layout_width="32dp"
                 android:layout_height="wrap_content"
                 android:src="@drawable/a0g" />
@@ -48,7 +48,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/userinfo"
+            android:id="@+id/user_dpl"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:layout_marginTop="20dp"
@@ -66,7 +66,7 @@
                 android:textColor="@color/black" />
 
             <com.homework.ksing.ksing.ui.main.CircleImageView
-                android:id="@+id/imageView24"
+                android:id="@+id/user_dpi"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_margin="8dp"
@@ -91,6 +91,7 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/namel"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:orientation="horizontal">
@@ -105,7 +106,7 @@
                     android:textColor="@color/black" />
 
                 <TextView
-                    android:id="@+id/textView25"
+                    android:id="@+id/nameT"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -122,6 +123,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/codel"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:orientation="horizontal">
@@ -136,7 +138,7 @@
                     android:textColor="@color/black" />
 
                 <TextView
-                    android:id="@+id/textView26"
+                    android:id="@+id/codeT"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -153,6 +155,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/sexl"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:orientation="horizontal">
@@ -167,7 +170,7 @@
                     android:textColor="@color/black" />
 
                 <TextView
-                    android:id="@+id/textView28"
+                    android:id="@+id/sexT"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -192,6 +195,7 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/living_placel"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:orientation="horizontal">
@@ -206,7 +210,7 @@
                     android:textColor="@color/black" />
 
                 <TextView
-                    android:id="@+id/textView43"
+                    android:id="@+id/living_placeT"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -223,6 +227,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/signaturel"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:orientation="horizontal">
@@ -237,7 +242,7 @@
                     android:textColor="@color/black" />
 
                 <TextView
-                    android:id="@+id/textView48"
+                    android:id="@+id/signatureT"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -262,6 +267,7 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/schooll"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:orientation="horizontal">
@@ -276,7 +282,7 @@
                     android:textColor="@color/black" />
 
                 <TextView
-                    android:id="@+id/textView49"
+                    android:id="@+id/schoolT"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -293,6 +299,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/occupationl"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:orientation="horizontal">
@@ -307,7 +314,7 @@
                     android:textColor="@color/black" />
 
                 <TextView
-                    android:id="@+id/textView50"
+                    android:id="@+id/occupationT"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -324,6 +331,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/hometownl"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:orientation="horizontal">
@@ -338,7 +346,7 @@
                     android:textColor="@color/black" />
 
                 <TextView
-                    android:id="@+id/textView51"
+                    android:id="@+id/hometownT"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -355,6 +363,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/heightl"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:orientation="horizontal">
@@ -369,7 +378,7 @@
                     android:textColor="@color/black" />
 
                 <TextView
-                    android:id="@+id/textView52"
+                    android:id="@+id/textViewheightT"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -408,7 +417,7 @@
                     android:textColor="@color/black" />
 
                 <ImageView
-                    android:id="@+id/imageView20"
+                    android:id="@+id/is_show_in1"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center_vertical"
@@ -432,7 +441,7 @@
                     android:textColor="@color/black" />
 
                 <ImageView
-                    android:id="@+id/imageView22"
+                    android:id="@+id/is_show_in2"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center_vertical"
