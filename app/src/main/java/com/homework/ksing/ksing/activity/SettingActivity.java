@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.homework.ksing.ksing.R;
+import com.homework.ksing.ksing.Service.GetMsgService;
 import com.homework.ksing.ksing.controller.MyURL;
 import com.homework.ksing.ksing.ui.EditUserInfoActivity;
 import com.homework.ksing.ksing.ui.EvaluateActivity;
@@ -111,6 +112,9 @@ public class SettingActivity extends Activity {
                 editor.putString("sessionID", "");
                 editor.putBoolean("isLogin", false);
                 editor.commit();
+                /*关闭后台服务*/
+                Intent service=new Intent(SettingActivity.this,GetMsgService.class);
+                stopService(service);
                 Intent intent = new Intent(SettingActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();

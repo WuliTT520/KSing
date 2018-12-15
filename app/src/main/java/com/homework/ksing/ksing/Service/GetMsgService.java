@@ -3,6 +3,7 @@ package com.homework.ksing.ksing.Service;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -15,7 +16,9 @@ import android.util.Log;
 
 import com.homework.ksing.ksing.R;
 import com.homework.ksing.ksing.activity.NotificationDemoActivity;
+import com.homework.ksing.ksing.activity.WelcomeActivity;
 import com.homework.ksing.ksing.controller.MyURL;
+import com.homework.ksing.ksing.ui.MainActivity;
 
 import org.json.JSONObject;
 
@@ -63,20 +66,32 @@ public class GetMsgService extends Service {
                         try {
                             String result = response.body().string();
                             Log.w("success",result);
-                            NotificationManager manager=(NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                            NotificationChannel channel = new NotificationChannel("1",
-                                    "动态消息", NotificationManager.IMPORTANCE_DEFAULT);
-                            channel.enableLights(true); //是否在桌面icon右上角展示小红点
-                            channel.setLightColor(R.color.red); //小红点颜色
-                            channel.setShowBadge(true); //是否在久按桌面图标时显示此渠道的通知
-                            manager.createNotificationChannel(channel);
+//                            System.out.println("***********");
+//                            System.out.println("result="+result);
+//                            System.out.println("***********");
 
-                            Notification.Builder builder=new Notification.Builder(GetMsgService.this)
-                                    .setSmallIcon(R.drawable.ul)
-                                    .setContentTitle("全民K歌")/*设置标题*/
-                                    .setChannelId("1")/*设置渠道*/
-                                    .setContentText(result+"评论了你，快去看看看吧！");
-                            manager.notify(1,builder.build());
+
+                            if(!(result.equals(""))){
+                                NotificationManager manager=(NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                                NotificationChannel channel = new NotificationChannel("1",
+                                        "动态消息", NotificationManager.IMPORTANCE_DEFAULT);
+                                channel.enableLights(true); //是否在桌面icon右上角展示小红点
+                                channel.setLightColor(R.color.red); //小红点颜色
+                                channel.setShowBadge(true); //是否在久按桌面图标时显示此渠道的通知
+                                manager.createNotificationChannel(channel);
+
+                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                PendingIntent contentIntent = PendingIntent.getActivity(getApplicationContext(), 0,  intent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+                                Notification.Builder builder=new Notification.Builder(GetMsgService.this)
+                                        .setSmallIcon(R.drawable.ul)
+                                        .setContentTitle("全民K歌")/*设置标题*/
+                                        .setChannelId("1")/*设置渠道*/
+                                        .setContentIntent(contentIntent)/*设置跳转页面*/
+                                        .setAutoCancel(true)/*点击消失*/
+                                        .setContentText(result+"评论了你，快去看看看吧！");
+                                manager.notify(1,builder.build());
+                            }
 
                         }catch (Exception e){
                             e.printStackTrace();
