@@ -159,6 +159,7 @@ public class SettingActivity extends Activity {
                     data = new JSONObject(result);
                     System.out.println(data);
                     userDp.setImageURL(myURL.getURL()+data.getString("user_dp"));
+                    /*会报错*/
                     userName.setText(data.getString("user_name")+"");
 
                 } catch (JSONException e) {
