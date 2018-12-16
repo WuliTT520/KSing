@@ -60,6 +60,7 @@ public class AFragment extends android.support.v4.app.Fragment {
     private String[] songname=new String[100];
     private String[] num=new String[100];
     private String[]elnum=new String[100];
+    private String[]state_code=new String[100];
     private MyAdapter adapter;
 
     private MyURL myURL=new MyURL();
@@ -173,6 +174,7 @@ public class AFragment extends android.support.v4.app.Fragment {
                         songname[i] = jsonObject.getString("song_name");
                         num[i]="3";
                         elnum[i]=jsonObject.getString("evaluate_num");
+                        state_code[i]=jsonObject.getString("state_code");
 
                     }
                     for (int i=0;i<data.length();i++) {
@@ -212,7 +214,13 @@ public class AFragment extends android.support.v4.app.Fragment {
                         public void onElnumClick(int i) {
                             System.out.println("评论    "+i);
                             Intent intent=new Intent(getActivity(), EvaluateActivity.class);
+                            intent.putExtra("state_code", state_code[i]);
+                            intent.putExtra("song_dp",picture1[i]);
+                            intent.putExtra("songName",songname[i]);
+
+
                             startActivity(intent);
+
                         }
                     });
                     adapter.setOnItemKgClickListener(new MyAdapter.onItemKgClickListener() {

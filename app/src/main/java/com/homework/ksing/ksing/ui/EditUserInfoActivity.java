@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.homework.ksing.ksing.R;
 import com.homework.ksing.ksing.activity.KgLoginActivity;
+import com.homework.ksing.ksing.activity.SettingActivity;
 import com.homework.ksing.ksing.controller.MyURL;
 import com.homework.ksing.ksing.ui.main.CircleImageView;
 
@@ -46,6 +47,7 @@ public class EditUserInfoActivity extends AppCompatActivity {
     private CircleImageView userDpImage;
     private ImageView isShowIn1Image;
     private ImageView isShowIn2Image;
+    private ImageView back;
 
     private TextView nameTextView;
     private TextView codeTextView;
@@ -90,6 +92,7 @@ public class EditUserInfoActivity extends AppCompatActivity {
         userDpImage=findViewById(R.id.user_dpi);
         isShowIn1Image=findViewById(R.id.is_show_in1);
         isShowIn2Image =findViewById(R.id.is_show_in2);
+        back=findViewById(R.id.back);
 
         nameTextView=findViewById(R.id.nameT);
         codeTextView =findViewById(R.id.codeT);
@@ -105,6 +108,13 @@ public class EditUserInfoActivity extends AppCompatActivity {
 
 
     public void setListener() {
+        //返回点击
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         //头像点击
         userDpLayout.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,6 +1,10 @@
 package com.homework.ksing.ksing.ui;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialog;
@@ -14,6 +18,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
@@ -22,13 +28,33 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.homework.ksing.ksing.R;
+import com.homework.ksing.ksing.activity.KgLoginActivity;
 import com.homework.ksing.ksing.adapter.CommentExpandAdapter;
+import com.homework.ksing.ksing.adapter.MyImageView;
 import com.homework.ksing.ksing.bean.CommentBean;
 import com.homework.ksing.ksing.bean.CommentDetailBean;
 import com.homework.ksing.ksing.bean.ReplyDetailBean;
+import com.homework.ksing.ksing.controller.MyURL;
+import com.homework.ksing.ksing.ui.main.MyAdapter;
 import com.homework.ksing.ksing.view.CommentExpandableListView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 /**
  * by moos on 2018/04/20
@@ -42,69 +68,44 @@ public class EvaluateActivity extends AppCompatActivity implements View.OnClickL
     private CommentBean commentBean;
     private List<CommentDetailBean> commentsList;
     private BottomSheetDialog dialog;
+    private MyImageView songbg;
+    private String state_code;
+    private String song_picture;
+    private SharedPreferences sp;
+    private MyURL myURL=new MyURL();
     private String testJson = "{\n" +
             "\t\"code\": 1000,\n" +
             "\t\"message\": \"查看评论成功\",\n" +
             "\t\"data\": {\n" +
             "\t\t\"total\": 3,\n" +
-            "\t\t\"list\": [{\n" +
-            "\t\t\t\t\"id\": 42,\n" +
-            "\t\t\t\t\"nickName\": \"程序猿\",\n" +
-            "\t\t\t\t\"userLogo\": \"http://ucardstorevideo.b0.upaiyun.com/userLogo/9fa13ec6-dddd-46cb-9df0-4bbb32d83fc1.png\",\n" +
-            "\t\t\t\t\"content\": \"时间是一切财富中最宝贵的财富。\",\n" +
-            "\t\t\t\t\"imgId\": \"xcclsscrt0tev11ok364\",\n" +
-            "\t\t\t\t\"replyTotal\": 1,\n" +
-            "\t\t\t\t\"createDate\": \"三分钟前\",\n" +
-            "\t\t\t\t\"replyList\": [{\n" +
-            "\t\t\t\t\t\"nickName\": \"沐風\",\n" +
-            "\t\t\t\t\t\"userLogo\": \"http://ucardstorevideo.b0.upaiyun.com/userLogo/9fa13ec6-dddd-46cb-9df0-4bbb32d83fc1.png\",\n" +
-            "\t\t\t\t\t\"id\": 40,\n" +
-            "\t\t\t\t\t\"commentId\": \"42\",\n" +
-            "\t\t\t\t\t\"content\": \"时间总是在不经意中擦肩而过,不留一点痕迹.\",\n" +
-            "\t\t\t\t\t\"status\": \"01\",\n" +
-            "\t\t\t\t\t\"createDate\": \"一个小时前\"\n" +
-            "\t\t\t\t}]\n" +
-            "\t\t\t},\n" +
-            "\t\t\t{\n" +
-            "\t\t\t\t\"id\": 41,\n" +
-            "\t\t\t\t\"nickName\": \"设计狗\",\n" +
-            "\t\t\t\t\"userLogo\": \"http://ucardstorevideo.b0.upaiyun.com/userLogo/9fa13ec6-dddd-46cb-9df0-4bbb32d83fc1.png\",\n" +
-            "\t\t\t\t\"content\": \"这世界要是没有爱情，它在我们心中还会有什么意义！这就如一盏没有亮光的走马灯。\",\n" +
-            "\t\t\t\t\"imgId\": \"xcclsscrt0tev11ok364\",\n" +
-            "\t\t\t\t\"replyTotal\": 1,\n" +
-            "\t\t\t\t\"createDate\": \"一天前\",\n" +
-            "\t\t\t\t\"replyList\": [{\n" +
-            "\t\t\t\t\t\"nickName\": \"沐風\",\n" +
-            "\t\t\t\t\t\"userLogo\": \"http://ucardstorevideo.b0.upaiyun.com/userLogo/9fa13ec6-dddd-46cb-9df0-4bbb32d83fc1.png\",\n" +
-            "\t\t\t\t\t\"commentId\": \"41\",\n" +
-            "\t\t\t\t\t\"content\": \"时间总是在不经意中擦肩而过,不留一点痕迹.\",\n" +
-            "\t\t\t\t\t\"status\": \"01\",\n" +
-            "\t\t\t\t\t\"createDate\": \"三小时前\"\n" +
-            "\t\t\t\t}]\n" +
-            "\t\t\t},\n" +
-            "\t\t\t{\n" +
-            "\t\t\t\t\"id\": 40,\n" +
-            "\t\t\t\t\"nickName\": \"产品喵\",\n" +
-            "\t\t\t\t\"userLogo\": \"http://ucardstorevideo.b0.upaiyun.com/userLogo/9fa13ec6-dddd-46cb-9df0-4bbb32d83fc1.png\",\n" +
-            "\t\t\t\t\"content\": \"笨蛋自以为聪明，聪明人才知道自己是笨蛋。\",\n" +
-            "\t\t\t\t\"imgId\": \"xcclsscrt0tev11ok364\",\n" +
-            "\t\t\t\t\"replyTotal\": 0,\n" +
-            "\t\t\t\t\"createDate\": \"三天前\",\n" +
-            "\t\t\t\t\"replyList\": []\n" +
-            "\t\t\t}\n" +
-            "\t\t]\n" +
-            "\t}\n" +
-            "}";
+            "\t\t\"list\": [{\n" ;
 
+    private TextView myName;
+    private TextView myText;
+    private TextView songName;
+    private CircleImageView myDp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_evaluate);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+        System.out.println(testJson);
         initView();
     }
 
     private void initView() {
+        Intent intent = getIntent();
+        state_code=intent.getExtras().getString("state_code");
+        song_picture=intent.getExtras().getString("song_dp");
+        getInChildThread(myURL.getURL()+"/getDynamicStateInfo");
+
+        myName=findViewById(R.id.detail_page_userName);
+        myText=findViewById(R.id.detail_page_story);
+        songName=findViewById(R.id.detail_page_title);
+        myDp=findViewById(R.id.detail_page_userLogo);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        songbg=findViewById(R.id.detail_page_image);
         expandableListView = (CommentExpandableListView) findViewById(R.id.detail_page_lv_comment);
         bt_comment = (TextView) findViewById(R.id.detail_page_do_comment);
         bt_comment.setOnClickListener(this);
@@ -115,6 +116,10 @@ public class EvaluateActivity extends AppCompatActivity implements View.OnClickL
         collapsingToolbar.setTitle("详情");
         commentsList = generateTestData();
         initExpandableListView(commentsList);
+        songbg.setImageURL(myURL.getURL()+song_picture);
+        songName.setText(intent.getExtras().getString("songName"));
+
+
     }
 
     /**
@@ -177,7 +182,9 @@ public class EvaluateActivity extends AppCompatActivity implements View.OnClickL
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == android.R.id.home){
             finish();
-            return true;
+
+
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -217,8 +224,12 @@ public class EvaluateActivity extends AppCompatActivity implements View.OnClickL
 
                     //commentOnWork(commentContent);
                     dialog.dismiss();
-                    CommentDetailBean detailBean = new CommentDetailBean("小明", commentContent,"刚刚");
+                    CommentDetailBean detailBean = new CommentDetailBean(myName.getText().toString(), commentContent,"刚刚");
+                    detailBean.setUserLogo(myURL.getURL()+myDp);
                     adapter.addTheCommentData(detailBean);
+
+                    addComment(myURL.getURL()+"/addComment",commentContent);
+
                     Toast.makeText(EvaluateActivity.this,"评论成功", Toast.LENGTH_SHORT).show();
 
                 }else {
@@ -267,7 +278,7 @@ public class EvaluateActivity extends AppCompatActivity implements View.OnClickL
                 if(!TextUtils.isEmpty(replyContent)){
 
                     dialog.dismiss();
-                    ReplyDetailBean detailBean = new ReplyDetailBean("小红",replyContent);
+                    ReplyDetailBean detailBean = new ReplyDetailBean(myName.getText().toString(),replyContent);
                     adapter.addTheReplyData(detailBean, position);
                     expandableListView.expandGroup(position);
                     Toast.makeText(EvaluateActivity.this,"回复成功", Toast.LENGTH_SHORT).show();
@@ -297,6 +308,145 @@ public class EvaluateActivity extends AppCompatActivity implements View.OnClickL
             }
         });
         dialog.show();
+    }
+
+
+
+    private void getInChildThread(String url) {
+
+        sp=this.getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+
+        OkHttpClient client = new OkHttpClient.Builder()
+                .readTimeout(5, TimeUnit.SECONDS)
+                .build();
+
+        //post请求来获得数据
+        //创建一个RequestBody，存放重要数据的键值对
+        RequestBody body = new FormBody.Builder()
+                .add("state_code",state_code).build();
+        //创建一个请求对象，传入URL地址和相关数据的键值对的对象
+        final Request request = new Request.Builder().addHeader("cookie",sp.getString("sessionID",""))
+                .url(url)
+                .post(body).build();
+
+        //创建一个能处理请求数据的操作类
+        Call call = client.newCall(request);
+
+        //使用异步任务的模式请求数据
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e("TAG","错误信息：" + e.toString());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String result=response.body().string();
+                JSONObject data = null;
+                try {
+                    data = new JSONObject(result);
+                    myName.setText(data.getString("name"));
+                    myText.setText(data.getString("user_text"));
+
+                    JSONArray dateArray=data.getJSONArray("comments");
+                    for(int i=0;i<dateArray.length();i++)
+                    {
+                        JSONObject jsonObject=dateArray.getJSONObject(i);
+                        String user_dp=myURL.getURL()+jsonObject.getString("friend_dp");
+                        System.out.println(user_dp);
+                        if(i==dateArray.length()-1){
+                            testJson+="\t\t\t\t\"id\": 40,\n" +
+                                    "\t\t\t\t\"nickName\": \""+jsonObject.getString("friend_name")+"\",\n" +
+                                    "\t\t\t\t\"userLogo\": \""+user_dp+"\",\n" +
+                                    "\t\t\t\t\"content\": \""+jsonObject.getString("text")+"\",\n" +
+                                    "\t\t\t\t\"imgId\": \"xcclsscrt0tev11ok364\",\n" +
+                                    "\t\t\t\t\"replyTotal\": 0,\n" +
+                                    "\t\t\t\t\"createDate\": \"三天前\"\n" +
+
+                                    "\t\t\t}\n" +
+                                    "\t\t]\n" +
+                                    "\t}\n" +
+                                    "}";
+                            break;
+                        }
+                        testJson+="\t\t\t\t\"id\": 42,\n" +
+                                "\t\t\t\t\"nickName\": \""+jsonObject.getString("friend_name")+"\",\n" +
+                                "\t\t\t\t\"userLogo\": \""+user_dp+"\",\n" +
+                                "\t\t\t\t\"content\": \""+jsonObject.getString("text")+"\",\n" +
+                                "\t\t\t\t\"imgId\": \"xcclsscrt0tev11ok364\",\n" +
+                                "\t\t\t\t\"replyTotal\": 1,\n" +
+                                "\t\t\t\t\"createDate\": \"三分钟前\"\n" +"\t\t\t},\n" +
+                            "\t\t\t{\n" ;
+
+
+
+
+
+                    }
+
+                    System.out.println(testJson);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(data);
+
+
+
+
+            }
+        });
+
+
+
+
+
+    }
+
+
+    private void addComment(String url,String commentContent) {
+
+        sp=this.getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+
+        OkHttpClient client = new OkHttpClient.Builder()
+                .readTimeout(5, TimeUnit.SECONDS)
+                .build();
+
+        //post请求来获得数据
+        //创建一个RequestBody，存放重要数据的键值对
+        RequestBody body = new FormBody.Builder()
+                .add("state_code",state_code)
+                .add("text",commentContent).build();
+        //创建一个请求对象，传入URL地址和相关数据的键值对的对象
+        final Request request = new Request.Builder().addHeader("cookie",sp.getString("sessionID",""))
+                .url(url)
+                .post(body).build();
+
+        //创建一个能处理请求数据的操作类
+        Call call = client.newCall(request);
+
+        //使用异步任务的模式请求数据
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e("TAG","错误信息：" + e.toString());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+
+
+
+
+
+
+            }
+        });
+
+
+
+
+
     }
 
 }

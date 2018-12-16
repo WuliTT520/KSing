@@ -16,7 +16,7 @@
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.KgLoginActivity" />
         <activity android:name=".ui.MainActivity" />
-        <activity android:name=".ui.EvaluateActivity" />
+        <activity android:name=".ui.EvaluateActivity"  />
         <activity android:name=".activity.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

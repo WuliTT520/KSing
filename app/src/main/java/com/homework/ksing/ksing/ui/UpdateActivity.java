@@ -64,8 +64,7 @@ public class UpdateActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(UpdateActivity.this,EditUserInfoActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
         finish.setOnClickListener(new View.OnClickListener() {

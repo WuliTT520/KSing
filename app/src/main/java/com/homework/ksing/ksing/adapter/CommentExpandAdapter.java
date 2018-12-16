@@ -2,6 +2,7 @@ package com.homework.ksing.ksing.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.net.Uri;
 import android.support.design.widget.BottomSheetDialog;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -100,14 +101,16 @@ public class CommentExpandAdapter extends BaseExpandableListAdapter {
         }else {
             groupHolder = (GroupHolder) convertView.getTag();
         }
-        Glide.with(context).load(R.drawable.user_other)
+        Glide.with(context).load(commentBeanList.get(groupPosition).getUserLogo())
                 .diskCacheStrategy(DiskCacheStrategy.RESULT)
-                .error(R.mipmap.ic_launcher)
+                .error(R.drawable.touxiang)
                 .centerCrop()
                 .into(groupHolder.logo);
         groupHolder.tv_name.setText(commentBeanList.get(groupPosition).getNickName());
         groupHolder.tv_time.setText(commentBeanList.get(groupPosition).getCreateDate());
         groupHolder.tv_content.setText(commentBeanList.get(groupPosition).getContent());
+
+
         groupHolder.iv_like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
