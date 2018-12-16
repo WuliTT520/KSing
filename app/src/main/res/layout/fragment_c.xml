@@ -23,9 +23,9 @@
             android:id="@+id/textView15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:layout_marginStart="12dp"
             android:layout_marginTop="28dp"
-            android:layout_marginBottom="8dp"
             android:text="消息"
             android:textColor="@color/white"
             android:textSize="30sp"
@@ -37,9 +37,9 @@
             android:id="@+id/imageView11"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="28dp"
             android:background="@drawable/beo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -170,201 +170,6 @@
             android:id="@+id/list2"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="98dp"
-                android:background="@color/white"
-                android:orientation="horizontal">
-
-                <com.homework.ksing.ksing.ui.main.CircleImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_margin="8dp"
-                    app:srcCompat="@drawable/b2r" />
-
-                <LinearLayout
-                    android:layout_width="285dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="大赛"
-                        android:textColor="@color/black"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="精彩赛事 快来关注"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginBottom="24dp"
-                    android:src="@drawable/a0m"
-                    app:srcCompat="@drawable/a0m"
-                    tools:srcCompat="@drawable/a0m" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="64dp"
-                android:background="@color/white"
-                android:orientation="horizontal">
-
-                <com.homework.ksing.ksing.ui.main.CircleImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_margin="8dp"
-                    android:src="@drawable/b1j"
-                    app:srcCompat="@drawable/b1j" />
-
-                <LinearLayout
-                    android:layout_width="285dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="认证歌手"
-                        android:textColor="@color/black"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="屿汐全新专辑火热上线"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginBottom="24dp"
-                    android:src="@drawable/a0m"
-                    app:srcCompat="@drawable/a0m"
-                    tools:srcCompat="@drawable/a0m" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:orientation="horizontal">
-
-                <com.homework.ksing.ksing.ui.main.CircleImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_margin="8dp"
-                    android:src="@drawable/b2s"
-                    app:srcCompat="@drawable/b2s" />
-
-                <LinearLayout
-                    android:layout_width="285dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="K歌商城"
-                        android:textColor="@color/black"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="一键美声——K歌SSS神器"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginBottom="24dp"
-                    android:src="@drawable/a0m"
-                    app:srcCompat="@drawable/a0m"
-                    tools:srcCompat="@drawable/a0m" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:orientation="horizontal">
-
-                <com.homework.ksing.ksing.ui.main.CircleImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_margin="8dp"
-                    android:src="@drawable/bv_"
-                    app:srcCompat="@drawable/bv_" />
-
-                <LinearLayout
-                    android:layout_width="285dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="随心听"
-                        android:textColor="@color/black"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="随心听，你的专属私人音乐台"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginBottom="24dp"
-                    android:src="@drawable/a0m"
-                    app:srcCompat="@drawable/a0m"
-                    tools:srcCompat="@drawable/a0m" />
-
-            </LinearLayout>
-        </LinearLayout>
 
     </com.example.circlerefresh.CircleRefreshLayout>
 
