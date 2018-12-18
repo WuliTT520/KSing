@@ -50,7 +50,7 @@ public class AFragment extends android.support.v4.app.Fragment {
     private CircleRefreshLayout mRefreshLayout;
     private ListView mList;
     private List contacts=new ArrayList(0);
-    private List<String>contacts1=new ArrayList();
+
     private SharedPreferences sp;
     private String[] name=new String[100];
     private String[] picture=new String[100];
@@ -95,8 +95,11 @@ public class AFragment extends android.support.v4.app.Fragment {
                             @Override
                             public void run() {
                                 super.run();
+
+                                getInChildThread(myURL.getURL()+"/getDynamicState");
                                 try {
-                                    Thread.sleep(2000);//休眠3秒
+
+                                    Thread.sleep(1000);//休眠3秒
                                 } catch (InterruptedException e) {
                                     e.printStackTrace();
                                 }
@@ -177,6 +180,7 @@ public class AFragment extends android.support.v4.app.Fragment {
                         state_code[i]=jsonObject.getString("state_code");
 
                     }
+                    List<String>contacts1=new ArrayList();
                     for (int i=0;i<data.length();i++) {
 
                         HashMap map=new HashMap<String,Object>();
@@ -207,9 +211,12 @@ public class AFragment extends android.support.v4.app.Fragment {
                     });
 
                     */
-                    adapter = new MyAdapter(getActivity(), name,picture,time,text,picture1,songname,num,elnum,contacts1);
-                    mList.setAdapter(adapter);
-                    adapter.setOnItemElnumClickListener(new MyAdapter.onItemElnumClickListener() {
+                    //adapter = new MyAdapter(getActivity(), name,picture,time,text,picture1,songname,num,elnum,contacts1);
+                    MyAdapter adapter1 = new MyAdapter(getActivity(), name,picture,time,text,picture1,songname,num,elnum,contacts1);
+                    mList.setAdapter(adapter1);
+                    //mList.setAdapter();
+
+                    adapter1.setOnItemElnumClickListener(new MyAdapter.onItemElnumClickListener() {
                         @Override
                         public void onElnumClick(int i) {
                             System.out.println("评论    "+i);
@@ -223,19 +230,19 @@ public class AFragment extends android.support.v4.app.Fragment {
 
                         }
                     });
-                    adapter.setOnItemKgClickListener(new MyAdapter.onItemKgClickListener() {
+                    adapter1.setOnItemKgClickListener(new MyAdapter.onItemKgClickListener() {
                         @Override
                         public void onKgClick(int i) {
                             System.out.println("K歌    "+i);
                         }
                     });
-                    adapter.setOnItemGiftClickListener(new MyAdapter.onItemGiftClickListener() {
+                    adapter1.setOnItemGiftClickListener(new MyAdapter.onItemGiftClickListener() {
                         @Override
                         public void onGiftClick(int i) {
                             System.out.println("送礼    "+i);
                         }
                     });
-                    adapter.setOnItemShareClickListener(new MyAdapter.onItemShareClickListener() {
+                    adapter1.setOnItemShareClickListener(new MyAdapter.onItemShareClickListener() {
                         @Override
                         public void onShareClick(int i) {
                             System.out.println("分享    "+i);

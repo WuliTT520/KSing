@@ -22,7 +22,7 @@
             android:src="@drawable/a0g" />
 
         <TextView
-            android:id="@+id/textView25"
+            android:id="@+id/songName"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"

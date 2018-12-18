@@ -56,7 +56,7 @@ public class DFragment extends android.support.v4.app.Fragment {
     private CircleRefreshLayout mRefreshLayout;
     private LinearLayout myBottom;
     private MyAdapter adapter;
-    private ScrollDisabledListView mList;
+    private ListView mList;
     private List contacts=new ArrayList(0);
     private SharedPreferences sp;
     private TextView uName;
@@ -64,7 +64,7 @@ public class DFragment extends android.support.v4.app.Fragment {
     private TextView foNum;
     private CircleImageView userDp;
     private ImageView setting;
-    private List<String>contacts1=new ArrayList();
+
     private String[] name=new String[100];
     private String[] picture=new String[100];
     private String[] time=new String[100];
@@ -75,6 +75,7 @@ public class DFragment extends android.support.v4.app.Fragment {
     private String[]elnum=new String[100];
     private MyURL myURL=new MyURL();
     private ImageView toKg;
+    private String[]state_code=new String[100];
     @Nullable
     @Override
     public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -101,7 +102,7 @@ public class DFragment extends android.support.v4.app.Fragment {
             }
         });
         View myBottomView = View.inflate(getActivity(), R.layout.my_bottom_layout, null);
-        mList = (ScrollDisabledListView) myBottomView.findViewById(R.id.dynamicListview);
+        mList = (ListView) myBottomView.findViewById(R.id.dynamicListview);
 //        mList.setEnabled(false);
         mList.setFocusable(false);
         /*
@@ -158,8 +159,9 @@ public class DFragment extends android.support.v4.app.Fragment {
                             @Override
                             public void run() {
                                 super.run();
+                                getInChildThread1(myURL.getURL()+"/getMyDynamic");
                                 try {
-                                    Thread.sleep(2000);//休眠3秒
+                                    Thread.sleep(1000);//休眠3秒
                                 } catch (InterruptedException e) {
                                     e.printStackTrace();
                                 }
@@ -285,8 +287,10 @@ public class DFragment extends android.support.v4.app.Fragment {
                         songname[i] = jsonObject.getString("song_name");
                         num[i]="3";
                         elnum[i]=jsonObject.getString("evaluate_num");
+                        state_code[i]=jsonObject.getString("state_code");
 
                     }
+                    List<String>contacts1=new ArrayList();
                     for (int i=0;i<data.length();i++) {
 
                         HashMap map=new HashMap<String,Object>();
@@ -324,6 +328,9 @@ public class DFragment extends android.support.v4.app.Fragment {
                         public void onElnumClick(int i) {
                             System.out.println("评论    "+i);
                             Intent intent=new Intent(getActivity(), EvaluateActivity.class);
+                            intent.putExtra("state_code", state_code[i]);
+                            intent.putExtra("song_dp",picture1[i]);
+                            intent.putExtra("songName",songname[i]);
                             startActivity(intent);
                         }
                     });

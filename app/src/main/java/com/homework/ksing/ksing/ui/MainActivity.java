@@ -99,11 +99,12 @@ public class MainActivity extends FragmentActivity {
                     @Override
                     public boolean onTabClickEvent(View view, int position) {
                         if (position == 4) {
-                            Toast.makeText(MainActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
+
 
                         } else if (position == 2) {
                             //跳转页面（全民K歌）   或者   弹出菜单（微博）
-                            showMunu();
+                            Intent intent=new Intent(MainActivity.this,MusicListActivity.class);
+                            startActivity(intent);
                         }
                         return false;
                     }
@@ -119,6 +120,7 @@ public class MainActivity extends FragmentActivity {
 
     //仿微博弹出菜单
     private View createWeiboView() {
+
         ViewGroup view = (ViewGroup) View.inflate(MainActivity.this, R.layout.layout_add_view, null);
         menuLayout = view.findViewById(R.id.icon_group);
         cancelImageView = view.findViewById(R.id.cancel_iv);

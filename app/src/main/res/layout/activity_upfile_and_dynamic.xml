@@ -71,6 +71,7 @@
         android:orientation="vertical">
 
         <EditText
+            android:id="@+id/dtEditText"
             android:layout_width="match_parent"
             android:layout_height="105dp"
             android:layout_margin="12dp"

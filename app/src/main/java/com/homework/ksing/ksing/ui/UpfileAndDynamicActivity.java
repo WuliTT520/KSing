@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -46,6 +47,8 @@ public class UpfileAndDynamicActivity extends AppCompatActivity {
     private SharedPreferences sp;
     private TextView upload;
     private MyURL myURL=new MyURL();
+    private String songCode;
+    private EditText dtEditText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,12 +72,13 @@ public class UpfileAndDynamicActivity extends AppCompatActivity {
         back=findViewById(R.id.uback);
         stop=findViewById(R.id.stop);
         upload=findViewById(R.id.upload);
+        dtEditText=findViewById(R.id.dtEditText);
 
         sp = this.getSharedPreferences("userInfo", Context.MODE_PRIVATE);
         Intent intent = getIntent();
         filePath=intent.getExtras().getString("filePath");
         audioFile=new File(filePath);
-
+        songCode=intent.getExtras().getString("song_code");
 
     }
     public void setListener() {
@@ -136,14 +140,14 @@ public class UpfileAndDynamicActivity extends AppCompatActivity {
                 file.getName(), //文件的文字，服务器端用来解析的
                 RequestBody.create(MediaType.parse(".wav"), file));
 
-
+        builder.addFormDataPart("nr",dtEditText.getText().toString());
 
         //post请求来获得数据
         //创建一个RequestBody，存放重要数据的键值对
 
         //创建一个请求对象，传入URL地址和相关数据的键值对的对象
 
-        Request.Builder builder1 = new Request.Builder();
+        Request.Builder builder1 = new Request.Builder().addHeader("cookie",sp.getString("sessionID",""));
         builder1.url(url)
                 .post(builder.build());
         //创建一个能处理请求数据的操作类

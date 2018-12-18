@@ -20,16 +20,23 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.homework.ksing.ksing.R;
 import com.homework.ksing.ksing.activity.KgLoginActivity;
+import com.homework.ksing.ksing.controller.MyURL;
 
 public class KgeActivity extends Activity implements OnClickListener {
     private MediaPlayer mediaPlayer;
     private MediaPlayer mMediaPlayer;
     private MediaRecorder mediaRecorder = new MediaRecorder();
     private File audioFile;
+    private String filePath;
+    private String songName;
+    private String songCode;
+    private MyURL myURL=new MyURL();
+    private TextView songNameT;
 
     @Override
     public void onClick(View view) {
@@ -73,7 +80,7 @@ public class KgeActivity extends Activity implements OnClickListener {
                         mMediaPlayer.stop();
                     }
                     mMediaPlayer = new MediaPlayer();
-                    mMediaPlayer.setDataSource("http://www.ytmp3.cn/down/53810.mp3");
+                    mMediaPlayer.setDataSource(myURL.getURL()+filePath);
                     mMediaPlayer.prepare();
                     mMediaPlayer.start();
 
@@ -94,6 +101,7 @@ public class KgeActivity extends Activity implements OnClickListener {
                  case R.id.kgFinish:
                      Intent intent=new Intent(KgeActivity.this,UpfileAndDynamicActivity.class);
                      intent.putExtra("filePath", audioFile.getAbsolutePath());
+                     intent.putExtra("song_code", songCode);
                      startActivity(intent);
                     break;
                 case R.id.kgback:
@@ -127,11 +135,18 @@ public class KgeActivity extends Activity implements OnClickListener {
         LinearLayout btnPlay = (LinearLayout) findViewById(R.id.btnPlay);
         LinearLayout kgFinish=findViewById(R.id.kgFinish);
         ImageView kgback=findViewById(R.id.kgback);
+        Intent intent = getIntent();
+        filePath=intent.getExtras().getString("song_path");
+        songCode=intent.getExtras().getString("song_code");
+        songName=intent.getExtras().getString("song_name");
+        songNameT=findViewById(R.id.songName);
+        songNameT.setText(songName);
 
         btnStart.setOnClickListener(this);
         btnStop.setOnClickListener(this);
         btnPlay.setOnClickListener(this);
         kgFinish.setOnClickListener(this);
+        kgback.setOnClickListener(this);
 
 
     }
