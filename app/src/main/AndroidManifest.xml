@@ -4,6 +4,7 @@
     package="com.homework.ksing.ksing">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
         android:allowBackup="true"
@@ -16,7 +17,7 @@
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.KgLoginActivity" />
         <activity android:name=".ui.MainActivity" />
-        <activity android:name=".ui.EvaluateActivity"  />
+        <activity android:name=".ui.EvaluateActivity" />
         <activity android:name=".activity.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,7 +34,9 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".ui.UpdateActivity"></activity>
+        <activity android:name=".ui.UpdateActivity" />
+        <activity android:name=".ui.KgeActivity" />
+        <activity android:name=".ui.UpfileAndDynamicActivity"></activity>
     </application>
 
 </manifest>

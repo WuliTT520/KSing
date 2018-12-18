@@ -24,6 +24,7 @@ import com.homework.ksing.ksing.activity.KgLoginActivity;
 import com.homework.ksing.ksing.activity.SettingActivity;
 import com.homework.ksing.ksing.controller.MyURL;
 import com.homework.ksing.ksing.ui.EvaluateActivity;
+import com.homework.ksing.ksing.ui.KgeActivity;
 import com.homework.ksing.ksing.ui.MainActivity;
 import com.homework.ksing.ksing.view.ScrollDisabledListView;
 
@@ -73,11 +74,20 @@ public class DFragment extends android.support.v4.app.Fragment {
     private String[] num=new String[100];
     private String[]elnum=new String[100];
     private MyURL myURL=new MyURL();
+    private ImageView toKg;
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_d, container,false);
         getInChildThread(myURL.getURL()+"/getUserInfo");
+        toKg=view.findViewById(R.id.imageView21);
+        toKg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getActivity(), KgeActivity.class);
+                startActivity(intent);
+            }
+        });
         userDp=view.findViewById(R.id.user_dp);
          uName=view.findViewById(R.id.u_name);
         fNum=view.findViewById(R.id.friendNum);
