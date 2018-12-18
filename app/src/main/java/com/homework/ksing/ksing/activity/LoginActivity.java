@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         wechat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(LoginActivity.this,NotificationDemoActivity.class);
+                Intent intent=new Intent(LoginActivity.this,MusicPlayerActivity.class);
                 startActivity(intent);
             }
         });

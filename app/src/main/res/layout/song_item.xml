@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="64dp">
+
+    <com.homework.ksing.ksing.adapter.MyImageView
+        android:id="@+id/song_pic"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="8dp"
+        app:srcCompat="@drawable/songimg" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/song"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="歌曲名"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/singer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="歌手" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/more"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/bwe"
+        app:srcCompat="@drawable/bwe" />
+</LinearLayout>

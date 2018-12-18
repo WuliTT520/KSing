@@ -37,6 +37,15 @@
         <activity android:name=".ui.UpdateActivity" />
         <activity android:name=".ui.KgeActivity" />
         <activity android:name=".ui.UpfileAndDynamicActivity"></activity>
+        <service
+            android:name=".Service.GetMsgService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".Service.MusicService"
+            android:enabled="true"
+            android:exported="true" />
+        <activity android:name=".activity.MusicPlayerActivity"></activity>
     </application>
 
 </manifest>
