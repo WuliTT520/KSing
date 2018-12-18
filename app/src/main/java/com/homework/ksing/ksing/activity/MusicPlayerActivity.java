@@ -49,6 +49,7 @@ public class MusicPlayerActivity extends Activity {
     String[] song_name=new String[100];
     String[] singer=new String[100];
     String[] song_picture=new String[100];
+    String[] song_path=new String[100];
     ImageView play,next,quit,before;
     ListView musicList;
     SeekBar musicBar;
@@ -124,7 +125,7 @@ public class MusicPlayerActivity extends Activity {
                     try {
                         int code=101;
                         Parcel data=Parcel.obtain();
-                        data.writeString("/song/10001.mp3");
+                        data.writeString(song_path[playing]);
                         Parcel reply=Parcel.obtain();
                         binder.transact(code,data,reply,0);
                     }catch (Exception e){
@@ -191,7 +192,7 @@ public class MusicPlayerActivity extends Activity {
                 try {
                     int code=101;
                     Parcel data=Parcel.obtain();
-                    data.writeString("/song/10002.mp3");
+                    data.writeString(song_path[playing]);
                     Parcel reply=Parcel.obtain();
                     binder.transact(code,data,reply,0);
                 }catch (Exception e){
@@ -232,7 +233,7 @@ public class MusicPlayerActivity extends Activity {
                 try {
                     int code=101;
                     Parcel data=Parcel.obtain();
-                    data.writeString("/song/10002.mp3");
+                    data.writeString(song_path[playing]);
                     Parcel reply=Parcel.obtain();
                     binder.transact(code,data,reply,0);
                 }catch (Exception e){
@@ -309,6 +310,7 @@ public class MusicPlayerActivity extends Activity {
                         String sn=jsonObject.getString("song_name");
                         String s=jsonObject.getString("singer");
                         String sp=jsonObject.getString("song_picture");
+                        song_path[i]=jsonObject.getString("song_path");
                         song_code[i]=(sc);
                         code[i]=(c);
                         song_name[i]=(sn);
@@ -326,7 +328,7 @@ public class MusicPlayerActivity extends Activity {
                         item.put("song_picture",song_picture[i]);
                         myData.add("1");
                     }
-                    musicAdapter=new MusicAdapter(MusicPlayerActivity.this,song_code,code,song_name,singer,song_picture,myData);
+                    musicAdapter=new MusicAdapter(MusicPlayerActivity.this,song_code,code,song_name,singer,song_picture,song_path,myData);
                     musicList.setAdapter(musicAdapter);
 
                     musicList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -339,7 +341,7 @@ public class MusicPlayerActivity extends Activity {
                             try {
                                 int code=101;
                                 Parcel data=Parcel.obtain();
-                                data.writeString("/song/10002.mp3");
+                                data.writeString(song_path[playing]);
                                 Parcel reply=Parcel.obtain();
                                 binder.transact(code,data,reply,0);
                             }catch (Exception e){

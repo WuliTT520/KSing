@@ -26,15 +26,17 @@ public class MusicAdapter extends BaseAdapter {
     private String[] song_name;
     private String[] singer;
     private String[] song_picture;
+    private String[] song_path;
     private List<String> contacts;
     MyURL myURL=new MyURL();
-    public MusicAdapter(Context context, String[] song_code, String[] code, String[] song_name, String[] singer, String[] song_picture, List<String> contacts){
+    public MusicAdapter(Context context, String[] song_code, String[] code, String[] song_name, String[] singer, String[] song_picture, String[] song_path,List<String> contacts){
         this.context=context;
         this.song_code=song_code;
         this.code=code;
         this.song_name=song_name;
         this.singer=singer;
         this.song_picture=song_picture;
+        this.song_path=song_path;
         this.contacts=contacts;
     }
 
