@@ -50,6 +50,7 @@ public class MusicPlayerActivity extends Activity {
     String[] singer=new String[100];
     String[] song_picture=new String[100];
     String[] song_path=new String[100];
+    int sum=0;
     ImageView play,next,quit,before;
     ListView musicList;
     SeekBar musicBar;
@@ -180,7 +181,7 @@ public class MusicPlayerActivity extends Activity {
             public void onClick(View view) {
                 if(playing==-1){
                     playing=0;
-                }else if (playing>=0&&playing<song_code.length-1){
+                }else if (playing>=0&&playing<sum){
                     playing++;
                 }else{
                     return;
@@ -222,7 +223,7 @@ public class MusicPlayerActivity extends Activity {
             public void onClick(View view) {
                 if(playing==-1){
                     playing=0;
-                }else if (playing>=0&&playing<song_code.length-1){
+                }else if (playing>=0&&playing<sum){
                     playing--;
                 }else{
                     return;
@@ -317,7 +318,7 @@ public class MusicPlayerActivity extends Activity {
                         singer[i]=(s);
                         song_picture[i]=(sp);
                     }
-
+                    sum=data.length();
                     List myData=new ArrayList<Map<String,Object>>();
                     for (int i=0;i<data.length();i++){
                         Map item=new HashMap<String,Object>();
